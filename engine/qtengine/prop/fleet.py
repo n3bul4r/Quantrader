@@ -151,3 +151,82 @@ def theoretical_payout_ceiling(payout_cap: float, min_days_per_cycle: int, n_acc
                                trading_days: int = 252) -> float:
     """Upper bound on annual XFA extraction if every cycle hits the cap in the minimum days."""
     return payout_cap * split * (trading_days / min_days_per_cycle) * n_accounts
+
+
+@dataclass
+class BootstrapController:
+    """Budget manager for a fleet that starts from a small bankroll.
+
+    Slots are laid out slot-major (index = slot * n_paths + path). Budget per path =
+    start + Σ payouts − Σ fees across its slots. A Combine is bought for an idle slot only if
+    the budget covers its price *plus* the activation fee reserve; at most one purchase per day."""
+    n_slots: int
+    n_paths: int
+    start_budget: float
+    min_slot_gap_days: int = 0
+    monthly_topup: float = 0.0
+    day: int = 0
+
+    def _budget(self, fees, paid_net):
+        S, P = self.n_slots, self.n_paths
+        topups = self.monthly_topup * (self.day // MONTH)
+        return self.start_budget + topups + paid_net.reshape(S, P).sum(0) - fees.reshape(S, P).sum(0)
+
+    def initial_active(self, n):
+        act = np.zeros(n, dtype=bool)
+        act[: self.n_paths] = True                 # slot 0 active on every path at day 0
+        return act
+
+    def open_slots(self, phase, fees, paid_net, program):
+        S, P = self.n_slots, self.n_paths
+        self.day += 1
+        budget = self._budget(fees, paid_net)
+        idle = (phase == 2).reshape(S, P)
+        need = program.eval_fee + program.activation_fee
+        can = budget >= need
+        # first idle slot per path
+        first = np.where(idle.any(0), idle.argmax(0), -1)
+        opn = np.zeros((S, P), dtype=bool)
+        ok = can & (first >= 0)
+        opn[first[ok], np.nonzero(ok)[0]] = True
+        return opn.reshape(-1)
+
+    def can_pay(self, due, fees, paid_net, program):
+        S, P = self.n_slots, self.n_paths
+        budget = np.tile(self._budget(fees, paid_net), S)
+        return budget >= program.eval_fee
+
+
+def simulate_bootstrap(program: PropProgram, model: TradeModel, start_budget: float, max_slots: int = 5,
+                       rho: float = 0.4, sizing: SimSizing | None = None, payout_policy: PayoutPolicy | None = None,
+                       horizon_days: int = 756, n_paths: int = 1000, seed: int = 0, monthly_topup: float = 0.0) -> dict:
+    """Start with `start_budget` dollars and grow into up to `max_slots` accounts, paying every
+    Combine, renewal and activation fee out of the bankroll (start money + payouts)."""
+    cm = CorrelatedModel(model, max_slots, n_paths, rho)
+    ctl = BootstrapController(max_slots, n_paths, start_budget, monthly_topup=monthly_topup)
+    res = simulate_lifecycle(program, cm, sizing, None, horizon_days=horizon_days, n_paths=max_slots * n_paths,
+                             seed=seed, record_paths=False, payout_policy=payout_policy, return_cash_path=True,
+                             controller=ctl)
+    # payouts − fees = net result versus everything you put in (start money + top-ups are only funding)
+    cash = res.pop("_cash_path").reshape(horizon_days, max_slots, n_paths).sum(axis=1)
+    topups = monthly_topup * (np.arange(horizon_days)[:, None] // MONTH)
+    bankroll = start_budget + topups + cash
+    broke = (bankroll < program.eval_fee + program.activation_fee)
+    # "bust": bankroll can no longer buy a Combine and nothing is funded/active — approximated as
+    # never receiving a payout while the bankroll fell below the purchase threshold
+    years = [y for y in (1, 2, 3, 5) if y * 252 <= horizon_days]
+    first_cash_up = (cash > 0)
+    got_paid = first_cash_up.any(axis=0)
+    first_month = np.where(got_paid, first_cash_up.argmax(axis=0), -1) / MONTH
+    return {
+        "program": program.key, "model": model.summary(), "start_budget": start_budget, "max_slots": max_slots,
+        "sizing": res["sizing"],
+        "p_net_positive_ever": float(got_paid.mean()),
+        "median_months_to_net_positive": float(np.median(first_month[got_paid])) if got_paid.any() else None,
+        "p_stuck_broke_end": float((broke[-1] & (cash[-1] <= -0.5 * start_budget)).mean()),
+        "by_year": {y: {"median": float(np.median(cash[y * 252 - 1])), "mean": float(cash[y * 252 - 1].mean()),
+                        "p05": float(np.quantile(cash[y * 252 - 1], 0.05)), "p95": float(np.quantile(cash[y * 252 - 1], 0.95)),
+                        "p_positive": float((cash[y * 252 - 1] > 0).mean())} for y in years},
+        "milestones": _milestones(cash),
+        "evals_bought_mean_total": float(res["evals_bought_mean"] * max_slots),
+    }

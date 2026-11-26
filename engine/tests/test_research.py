@@ -84,3 +84,19 @@ def test_fleet_and_flywheel_shapes():
 def test_kelly_growth_law():
     assert kelly_years_to_multiple(1.0, np.e, 1.0) == pytest.approx(2.0)
     assert kelly_years_to_multiple(2.0, 1000, 1.0) < kelly_years_to_multiple(1.0, 1000, 1.0)
+
+
+def test_bootstrap_never_loses_more_than_put_in():
+    from dataclasses import replace as _r
+    from qtengine.prop.fleet import simulate_bootstrap
+    prog = get_program("topstep_50k")
+    zero = _r(PRESET_MODELS["zero_edge"], trades_per_day=2.4, max_trades_per_day=6)
+    for topup in (0.0, 116.0):
+        r = simulate_bootstrap(prog, zero, 348, sizing=SimSizing(risk_dollars=300), horizon_days=252, n_paths=200,
+                               monthly_topup=topup)
+        put_in = 348 + topup * 11
+        # small slack: an activation fee may be charged when the bankroll is already low
+        assert r["by_year"][1]["p05"] >= -(put_in + prog.activation_fee + 1)
+    good = simulate_bootstrap(prog, PRESET_MODELS["basket_planning"], 348, sizing=SimSizing(risk_dollars=300),
+                              horizon_days=252, n_paths=200, monthly_topup=116.0)
+    assert good["by_year"][1]["mean"] > r["by_year"][1]["mean"]

@@ -195,7 +195,11 @@ def simulate_lifecycle(
     record_paths: bool = True,
     payout_policy: PayoutPolicy | None = None,
     return_cash_path: bool = False,
+    controller=None,
 ) -> dict:
+    """controller (optional): budget manager for capital-constrained fleets. It decides which
+    inactive slots (phase 2) may buy a Combine each day and whether recurring fees can be paid;
+    failed accounts go inactive instead of being re-bought automatically."""
     sizing = sizing or SimSizing()
     guard = guard or SimGuard()
     payout_policy = payout_policy or PayoutPolicy()
@@ -228,10 +232,14 @@ def simulate_lifecycle(
     prof_since = np.zeros(P)
     best_since = np.zeros(P)
     fees = np.full(P, float(program.eval_fee))
+    if controller is not None:
+        _act0 = controller.initial_active(P)
+        phase = np.where(_act0, 0, 2)
+        fees = np.where(_act0, float(program.eval_fee), 0.0)
     paid_gross = np.zeros(P)
     paid_net = np.zeros(P)
     n_payouts = np.zeros(P, dtype=int)
-    evals = np.ones(P, dtype=int)
+    evals = np.ones(P, dtype=int) if controller is None else _act0.astype(int)
     passes = np.zeros(P, dtype=int)
     eval_fails = np.zeros(P, dtype=int)
     funded_blown = np.zeros(P, dtype=int)
@@ -244,9 +252,24 @@ def simulate_lifecycle(
 
     cost = model.cost_per_contract
     for d in range(horizon_days):
+        if controller is not None:
+            opn = controller.open_slots(phase, fees, paid_net, program)
+            phase = np.where(opn, 0, phase)
+            fees += np.where(opn, program.eval_fee, 0.0)
+            evals += opn
+            for arr in (p, hwm, best_day, prof_since, best_since):
+                arr[opn] = 0.0
+            for arr in (tdays, dphase, win_days):
+                arr[opn] = 0
+            mll = np.where(opn, -E.max_loss, mll)
         active = phase < 2
         if program.eval_fee_recurring_days:
             due = (phase == 0) & (dphase > 0) & (dphase % program.eval_fee_recurring_days == 0)
+            if controller is not None:
+                ok = controller.can_pay(due, fees, paid_net, program)
+                phase = np.where(due & ~ok, 2, phase)      # can't renew: subscription lapses
+                due &= ok
+                active = phase < 2
             fees += np.where(due, program.eval_fee, 0.0)
         is_f = phase == 1
         maxloss = _arr(phase, E, F, "max_loss", 0)
@@ -388,7 +411,12 @@ def simulate_lifecycle(
         else:
             to_f = passed
             to_e = failed_eval | failed_fund
-            fees += np.where(to_f, program.activation_fee, 0.0) + np.where(to_e, program.eval_fee, 0.0)
+            if controller is not None:
+                fees += np.where(to_f, program.activation_fee, 0.0)
+                phase = np.where(to_e, 2, phase)            # wait for the budget manager to re-buy
+                to_e = np.zeros(P, dtype=bool)
+            else:
+                fees += np.where(to_f, program.activation_fee, 0.0) + np.where(to_e, program.eval_fee, 0.0)
             evals += to_e
             reset = to_f | to_e
             phase = np.where(to_f, 1, np.where(to_e, 0, phase))
