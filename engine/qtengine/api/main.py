@@ -24,6 +24,8 @@ from .. import store
 from ..backtest import Sizing, _clean, run_backtest
 from ..data import load_bars, synthetic_bars
 from ..features import build_panel, day_type, vol_regime
+from ..growth import SCENARIOS as GROWTH_SCENARIOS
+from ..growth import GrowthPolicy, GrowthScenario, simulate_growth
 from ..journal import TagConfig, tag_trades
 from ..metrics import breakdown, daily_stats, drawdown, trade_stats
 from ..prop import PRESET_MODELS, PropAccountTracker, SimGuard, SimSizing, TradeModel, get_program, load_presets, simulate_lifecycle
@@ -90,6 +92,19 @@ class BacktestIn(BaseModel):
     momentum: float = 0.0
     seed: int = 0
     risk_dollars: float | None = 200
+
+
+class GrowthIn(BaseModel):
+    scenario: str = "s1_plan_cfd_1pct"
+    start_eur: float = 500
+    monthly_eur: float = 100
+    years: int = Field(10, ge=1, le=30)
+    n_paths: int = Field(2000, le=5000)
+    risk_fraction: float | None = None
+    model: str | None = None
+    vehicle: str | None = None
+    tax_rate: float = 0.0
+    compare_etf: bool = True
 
 
 class TradeIn(BaseModel):
@@ -238,6 +253,45 @@ async def backtest_upload(file: UploadFile = File(...), strategies: str = "S1", 
     out = _bt_payload(res, panel)
     out["data_source"] = f"uploaded: {path.name}"
     return out
+
+
+# ----------------------------------------------------------------------------- own-capital growth
+@app.get("/api/growth/scenarios")
+def growth_scenarios():
+    return {k: {"label": v.label, "kind": v.kind, "model": v.model, "vehicle": v.vehicle,
+                "risk_fraction": v.policy.risk_fraction} for k, v in GROWTH_SCENARIOS.items()}
+
+
+@app.get("/api/growth/study")
+def growth_study():
+    p = ROOT / "docs" / "results" / "own_capital_growth.json"
+    if not p.exists():
+        raise HTTPException(404, "run engine/scripts/own_capital_growth.py first")
+    js = json.loads(p.read_text())
+    return {k: v for k, v in js.items() if k != "runs"} | {
+        "checkpoints": {k: {"label": GROWTH_SCENARIOS[k].label, "checkpoints": r["checkpoints"]} for k, r in js["runs"].items()}}
+
+
+@app.post("/api/growth/simulate")
+def growth_simulate(req: GrowthIn):
+    from dataclasses import replace
+    if req.scenario not in GROWTH_SCENARIOS:
+        raise HTTPException(404, f"unknown scenario {req.scenario}")
+    sc = GROWTH_SCENARIOS[req.scenario]
+    if req.risk_fraction is not None:
+        sc = replace(sc, policy=replace(sc.policy, risk_fraction=req.risk_fraction,
+                                        min_unit_max_fraction=max(sc.policy.min_unit_max_fraction, 1.25 * req.risk_fraction)))
+    if req.model:
+        sc = replace(sc, model=req.model)
+    if req.vehicle:
+        sc = replace(sc, vehicle=req.vehicle)
+    cps = tuple(y for y in (1, 3, 5, 10, 15, 20, 30) if y <= req.years)
+    res = simulate_growth(sc, req.start_eur, req.monthly_eur, req.years, req.n_paths, checkpoints=cps, tax_rate=req.tax_rate)
+    if req.compare_etf and sc.kind != "etf":
+        etf = simulate_growth(GROWTH_SCENARIOS["etf"], req.start_eur, req.monthly_eur, req.years, req.n_paths,
+                              checkpoints=cps, tax_rate=req.tax_rate)
+        res["etf"] = {"checkpoints": etf["checkpoints"], "fan": etf["fan"]}
+    return _clean(res)
 
 
 # ----------------------------------------------------------------------------- journal

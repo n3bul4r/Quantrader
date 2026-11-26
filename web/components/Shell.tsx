@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { Activity, BarChart3, BookOpen, FlaskConical, Gauge, Moon, ShieldAlert, Sun, Trophy } from "lucide-react";
+import { Activity, BarChart3, BookOpen, FlaskConical, Gauge, Moon, ShieldAlert, Sprout, Sun, Trophy } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
@@ -13,6 +13,7 @@ const NAV = [
   { href: "/journal", label: "Journal", icon: BookOpen },
   { href: "/backtest", label: "Backtest", icon: FlaskConical },
   { href: "/prop", label: "Prop simulator", icon: Trophy },
+  { href: "/growth", label: "Growth planner", icon: Sprout },
 ];
 
 export default function Shell({ children }: { children: ReactNode }) {

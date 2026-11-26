@@ -4,6 +4,7 @@
 Date: 2026-11-26. Research and sources: [RESEARCH.md](RESEARCH.md). All Monte Carlo numbers can be reproduced with
 `engine/scripts/prop_economics.py` and `engine/scripts/portfolio_economics.py`
 (full tables: [results/prop_economics.md](results/prop_economics.md), [results/portfolio_economics.md](results/portfolio_economics.md)).
+Trading your own money instead of a prop account: [OWN_CAPITAL.md](OWN_CAPITAL.md).
 
 ---
 
@@ -28,7 +29,7 @@ Date: 2026-11-26. Research and sources: [RESEARCH.md](RESEARCH.md). All Monte Ca
    two years. **€20–50/day is a realistic year-2 target; €100–300/day requires the optimistic edge to be real.**
 5. **What you get here:** a working quant engine (strategies, cost-aware backtester, walk-forward / deflated-
    Sharpe validation gate, risk-of-ruin maths, live risk guard, prop-rule tracker, lifecycle Monte Carlo) with
-   33 passing tests, a FastAPI service and a Next.js dashboard. **No strategy here has been validated on real data
+   39 passing tests, a FastAPI service and a Next.js dashboard. **No strategy here has been validated on real data
    yet** — that is step 1 of the roadmap, and it needs ~$150–300 of historical data.
 
 ---
@@ -407,7 +408,7 @@ My judgement:
 ```bash
 python -m venv .venv && . .venv/bin/activate
 pip install -e "engine[dev]"
-cd engine && pytest -q                                   # 33 tests
+cd engine && pytest -q                                   # 39 tests
 python scripts/prop_economics.py --paths 6000            # docs/results/prop_economics.md (~5 min)
 python scripts/portfolio_economics.py                    # docs/results/portfolio_economics.md
 uvicorn qtengine.api.main:app --port 8000                # API + /docs

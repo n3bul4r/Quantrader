@@ -73,15 +73,18 @@ export function BarsChart({ data, x, y, height = 200, money: isMoney = true, pos
   );
 }
 
-export function FanChart({ data, height = 260 }: { data: { day: number; p05: number; p25: number; p50: number; p75: number; p95: number }[]; height?: number }) {
+export function FanChart({ data, height = 260, xKey = "day", xLabel = "trading day", currency = "$" }: {
+  data: any[]; height?: number; xKey?: string; xLabel?: string; currency?: string;
+}) {
+  const fmt = (v: number) => money(v).replace("$", currency);
   const rows = data.map((d) => ({ ...d, outer: [d.p05, d.p95], inner: [d.p25, d.p75] }));
   return (
     <ResponsiveContainer width="100%" height={height}>
       <AreaChart data={rows} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
         {grid}
-        <XAxis dataKey="day" {...axis} label={{ value: "trading day", position: "insideBottomRight", fill: "rgb(var(--muted))", fontSize: 10 }} />
-        <YAxis {...axis} tickFormatter={money} width={64} />
-        <Tooltip {...tip} formatter={(v: any) => (Array.isArray(v) ? `${money(v[0])} … ${money(v[1])}` : money(v))} />
+        <XAxis dataKey={xKey} {...axis} label={{ value: xLabel, position: "insideBottomRight", fill: "rgb(var(--muted))", fontSize: 10 }} />
+        <YAxis {...axis} tickFormatter={fmt} width={64} />
+        <Tooltip {...tip} formatter={(v: any) => (Array.isArray(v) ? `${fmt(v[0])} … ${fmt(v[1])}` : fmt(v))} />
         <ReferenceLine y={0} stroke="rgb(var(--muted))" />
         <Area dataKey="outer" stroke="none" fill="rgb(var(--accent))" fillOpacity={0.12} />
         <Area dataKey="inner" stroke="none" fill="rgb(var(--accent))" fillOpacity={0.25} />
@@ -117,6 +120,23 @@ export function SmallLine({ data, x, y, height = 140 }: { data: any[]; x: string
         <Tooltip {...tip} formatter={(v: number) => money(v)} />
         <ReferenceLine y={0} stroke="rgb(var(--muted))" />
         <Line dataKey={y} stroke="rgb(var(--accent))" strokeWidth={2} dot={false} />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+}
+
+export function MedianCompare({ data, height = 240 }: { data: { month: number; trading: number; etf?: number; contributed: number }[]; height?: number }) {
+  const eur = (v: number) => `€${Math.round(v).toLocaleString("en-US")}`;
+  return (
+    <ResponsiveContainer width="100%" height={height}>
+      <LineChart data={data} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
+        {grid}
+        <XAxis dataKey="month" {...axis} label={{ value: "month", position: "insideBottomRight", fill: "rgb(var(--muted))", fontSize: 10 }} />
+        <YAxis {...axis} tickFormatter={eur} width={64} />
+        <Tooltip {...tip} formatter={(v: number) => eur(v)} />
+        <Line dataKey="trading" name="trading (median)" stroke="rgb(var(--accent))" strokeWidth={2} dot={false} />
+        <Line dataKey="etf" name="index ETF (median)" stroke="rgb(var(--warn))" strokeWidth={2} dot={false} />
+        <Line dataKey="contributed" name="money put in" stroke="rgb(var(--muted))" strokeDasharray="4 4" strokeWidth={1.5} dot={false} />
       </LineChart>
     </ResponsiveContainer>
   );
