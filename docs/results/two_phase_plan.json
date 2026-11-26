@@ -1,0 +1,132 @@
+{
+ "runs": [
+  {
+   "model": "basket_planning",
+   "variant": "stop prop at $100k",
+   "risk": 0.005,
+   "median_3y": 116650.93859995749,
+   "median_5y": 153758.72671461524,
+   "p05_5y": 83710.91608467205,
+   "p_dd30": 0.05226480836236934,
+   "p_dd50": 0.0
+  },
+  {
+   "model": "basket_planning",
+   "variant": "stop prop at $100k",
+   "risk": 0.01,
+   "median_3y": 123581.76516262046,
+   "median_5y": 205803.36900899542,
+   "p05_5y": 71239.63581601532,
+   "p_dd30": 0.48606271777003485,
+   "p_dd50": 0.09407665505226481
+  },
+  {
+   "model": "basket_planning",
+   "variant": "stop prop at $100k",
+   "risk": 0.02,
+   "median_3y": 123995.50893171577,
+   "median_5y": 289297.8937587484,
+   "p05_5y": 44182.56995126619,
+   "p_dd30": 0.9128919860627178,
+   "p_dd50": 0.5940766550522648
+  },
+  {
+   "model": "basket_planning",
+   "variant": "keep prop running, keep feeding",
+   "risk": 0.005,
+   "median_3y": 203610.88864431923,
+   "median_5y": 464547.968279526,
+   "p05_5y": 101422.09080815564,
+   "p_dd30": 0.02264808362369338,
+   "p_dd50": 0.0
+  },
+  {
+   "model": "basket_planning",
+   "variant": "keep prop running, keep feeding",
+   "risk": 0.01,
+   "median_3y": 227053.9259226828,
+   "median_5y": 576908.9610220771,
+   "p05_5y": 98587.43165120338,
+   "p_dd30": 0.30662020905923343,
+   "p_dd50": 0.029616724738675958
+  },
+  {
+   "model": "basket_planning",
+   "variant": "keep prop running, keep feeding",
+   "risk": 0.02,
+   "median_3y": 235725.32302629136,
+   "median_5y": 733243.9304901983,
+   "p05_5y": 83291.15107012459,
+   "p_dd30": 0.8414634146341463,
+   "p_dd50": 0.45121951219512196
+  },
+  {
+   "model": "basket_optimistic",
+   "variant": "stop prop at $100k",
+   "risk": 0.005,
+   "median_3y": 234426.50782830553,
+   "median_5y": 495805.53201423807,
+   "p05_5y": 261074.6093156835,
+   "p_dd30": 0.0,
+   "p_dd50": 0.0
+  },
+  {
+   "model": "basket_optimistic",
+   "variant": "stop prop at $100k",
+   "risk": 0.01,
+   "median_3y": 490888.51290957915,
+   "median_5y": 2092027.716543551,
+   "p05_5y": 550467.7363915312,
+   "p_dd30": 0.13666666666666666,
+   "p_dd50": 0.0016666666666666668
+  },
+  {
+   "model": "basket_optimistic",
+   "variant": "stop prop at $100k",
+   "risk": 0.02,
+   "median_3y": 1711195.6471414291,
+   "median_5y": 10373249.654375993,
+   "p05_5y": 1702289.6411870364,
+   "p_dd30": 0.6166666666666667,
+   "p_dd50": 0.13333333333333333
+  },
+  {
+   "model": "basket_optimistic",
+   "variant": "keep prop running, keep feeding",
+   "risk": 0.005,
+   "median_3y": 1136038.8834250183,
+   "median_5y": 3452117.0200962555,
+   "p05_5y": 1665054.4432002667,
+   "p_dd30": 0.0,
+   "p_dd50": 0.0
+  },
+  {
+   "model": "basket_optimistic",
+   "variant": "keep prop running, keep feeding",
+   "risk": 0.01,
+   "median_3y": 1793455.0186770004,
+   "median_5y": 8666581.90357145,
+   "p05_5y": 2982687.1495196815,
+   "p_dd30": 0.03333333333333333,
+   "p_dd50": 0.0
+  },
+  {
+   "model": "basket_optimistic",
+   "variant": "keep prop running, keep feeding",
+   "risk": 0.02,
+   "median_3y": 4460144.258583292,
+   "median_5y": 14969749.543296782,
+   "p05_5y": 6902435.126857328,
+   "p_dd30": 0.315,
+   "p_dd50": 0.04833333333333333
+  }
+ ],
+ "basket_planning": {
+  "p_reach": 0.9566666666666667,
+  "median_months": 21.0
+ },
+ "basket_optimistic": {
+  "p_reach": 1.0,
+  "median_months": 9.0
+ }
+}

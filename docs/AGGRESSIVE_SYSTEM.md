@@ -236,6 +236,33 @@ Every payout goes into a personal futures account trading the same validated bas
   * It is simulated independently of the prop accounts, which flatters diversification. Live, the same signals fire
     in both, so drawdowns coincide.
 
+### 3.6b Two-phase plan: prop until $100k withdrawn, then trade it as your own money
+Full tables: [results/two_phase_plan.md](results/two_phase_plan.md) (`scripts/two_phase_plan.py`). Setup: 5 × 150K,
+decorrelated, 35 % of the max loss per trade.
+
+**Phase 1, time to $100k withdrawn:**
+* planning edge: median **21 months** (25th–75th percentile 13–32); 96 % chance within 5 years;
+* optimistic edge: median 9 months.
+
+**Phase 2, $100k of own money alone** (planning edge):
+
+| risk per trade | year-1 median gain | 3-year median | P(≥ 30 % drawdown) | median income if you withdraw gains |
+|---|---|---|---|---|
+| **0.5 %** | +$12.8k | $146k | 5 % | ≈ $51 per trading day |
+| 1 % | +$24.8k | $204k | 54 % | ≈ $98 per trading day |
+| no edge, 0.5 % | −$12.7k | $68k | 75 % | $0 |
+
+**Keep the prop fleet running after the switch.** 5-year median wealth (planning edge, 0.5 % own risk):
+* stop the prop fleet at $100k: **$154k**;
+* keep it running and keep feeding the own account: **$465k**, with the 5th percentile still ≈ $100k.
+
+**Rules at the switch:**
+1. Plan on the **after-tax** amount: prop payouts are usually taxed as income.
+2. Keep ≈ 30 % outside trading (cash or an index ETF).
+3. Own-account risk **0.5 % per trade**, at most 1 % (full Kelly ≈ 2.5 %).
+4. Kill switch at −20 % from peak.
+5. **Never carry the option-sized prop risk into your own account.**
+
 ### 3.7 Daily and weekly targets
 Expected P&L per slot = trades/day × E[R] × risk ≈ **0.15R per day**: ≈ $240/day and $1.2k/week per 150K slot at
 35 % risk (planning edge). Five slots ≈ $1.2k/day.
