@@ -48,7 +48,9 @@ INSTRUMENTS: dict[str, Instrument] = {
     # Full-size (only once the account comfortably supports 10+ micros)
     "ES": Instrument("ES", "E-mini S&P 500", 0.25, 50.0, 4.20, is_micro=False, micro_equivalent=10),
     "NQ": Instrument("NQ", "E-mini Nasdaq-100", 0.25, 20.0, 4.20, is_micro=False, micro_equivalent=10),
-    # Secondary / research only
+    "M2K": Instrument("M2K", "Micro E-mini Russell 2000", 0.10, 5.0, 1.40),
+    "M6E": Instrument("M6E", "Micro EUR/USD", 0.0001, 12500.0, 1.20),
+    # Commodities
     "MGC": Instrument("MGC", "Micro Gold", 0.10, 10.0, 1.70),
     "MCL": Instrument("MCL", "Micro WTI Crude", 0.01, 100.0, 1.70, slippage_ticks_entry=1.5, slippage_ticks_exit=1.5),
 }

@@ -199,10 +199,11 @@ class BootstrapController:
 
 def simulate_bootstrap(program: PropProgram, model: TradeModel, start_budget: float, max_slots: int = 5,
                        rho: float = 0.4, sizing: SimSizing | None = None, payout_policy: PayoutPolicy | None = None,
-                       horizon_days: int = 756, n_paths: int = 1000, seed: int = 0, monthly_topup: float = 0.0) -> dict:
+                       horizon_days: int = 756, n_paths: int = 1000, seed: int = 0, monthly_topup: float = 0.0,
+                       slot_model=None, return_monthly: bool = False) -> dict:
     """Start with `start_budget` dollars and grow into up to `max_slots` accounts, paying every
     Combine, renewal and activation fee out of the bankroll (start money + payouts)."""
-    cm = CorrelatedModel(model, max_slots, n_paths, rho)
+    cm = slot_model if slot_model is not None else CorrelatedModel(model, max_slots, n_paths, rho)
     ctl = BootstrapController(max_slots, n_paths, start_budget, monthly_topup=monthly_topup)
     res = simulate_lifecycle(program, cm, sizing, None, horizon_days=horizon_days, n_paths=max_slots * n_paths,
                              seed=seed, record_paths=False, payout_policy=payout_policy, return_cash_path=True,
@@ -218,8 +219,12 @@ def simulate_bootstrap(program: PropProgram, model: TradeModel, start_budget: fl
     first_cash_up = (cash > 0)
     got_paid = first_cash_up.any(axis=0)
     first_month = np.where(got_paid, first_cash_up.argmax(axis=0), -1) / MONTH
+    out_monthly = None
+    if return_monthly:
+        out_monthly = np.diff(np.concatenate([np.zeros((1, n_paths)), cash[MONTH - 1::MONTH]]), axis=0)
     return {
-        "program": program.key, "model": model.summary(), "start_budget": start_budget, "max_slots": max_slots,
+        "monthly_cash": out_monthly,
+        "program": program.key, "model": cm.summary(), "start_budget": start_budget, "max_slots": max_slots,
         "sizing": res["sizing"],
         "p_net_positive_ever": float(got_paid.mean()),
         "median_months_to_net_positive": float(np.median(first_month[got_paid])) if got_paid.any() else None,

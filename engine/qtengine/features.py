@@ -123,3 +123,45 @@ def day_type(p: DayPanel) -> np.ndarray:
     rng = p.high.max(axis=1) - p.low.min(axis=1)
     body = np.abs(p.day_close - p.day_open)
     return np.where(body >= 0.6 * np.maximum(rng, 1e-9), "trend", "range")
+
+
+# ----------------------------------------------------------------------------- per-market sessions
+SESSIONS = {
+    # market: (session start ET, minutes) — the liquid "pit" session the strategies trade
+    "MES": ("09:30", 390), "ES": ("09:30", 390), "MNQ": ("09:30", 390), "NQ": ("09:30", 390),
+    "MCL": ("09:00", 330), "CL": ("09:00", 330),          # NYMEX crude pit hours 09:00-14:30 ET
+    "MGC": ("08:20", 310), "GC": ("08:20", 310),          # COMEX gold pit hours 08:20-13:30 ET
+    "M2K": ("09:30", 390), "RTY": ("09:30", 390),
+    "M6E": ("08:20", 400), "6E": ("08:20", 400),          # CME FX pit hours 08:20-15:00 ET
+}
+
+
+def build_session_panel(df: pd.DataFrame, start: str = "09:30", minutes: int = 390, min_frac: float = 0.95) -> DayPanel:
+    """Align each session [start, start+minutes) onto a minute grid. df index must be tz-aware ET.
+    Days with fewer than min_frac*minutes bars (holidays, half days, gaps) are dropped."""
+    h, m = (int(x) for x in start.split(":"))
+    mins = (df.index.hour * 60 + df.index.minute - (h * 60 + m)).to_numpy()
+    keep = (mins >= 0) & (mins < minutes) & (df.index.dayofweek < 5)
+    d = df[keep].copy()
+    d["_m"] = mins[keep]
+    dates, arrs = [], {k: [] for k in ("open", "high", "low", "close", "volume")}
+    for day, g in d.groupby(d.index.date):
+        if len(g) < min_frac * minutes:
+            continue
+        gg = g.set_index("_m")
+        gg = gg[~gg.index.duplicated()].reindex(np.arange(minutes))
+        gg["close"] = gg["close"].ffill().bfill()
+        for c in ("open", "high", "low"):
+            gg[c] = gg[c].fillna(gg["close"])
+        gg["volume"] = gg["volume"].fillna(0.0)
+        dates.append(pd.Timestamp(day))
+        for k in arrs:
+            arrs[k].append(gg[k].to_numpy(dtype=float))
+    if not dates:
+        raise ValueError("No complete sessions found")
+    return DayPanel(dates, *(np.vstack(arrs[k]) for k in ("open", "high", "low", "close", "volume")))
+
+
+def market_panel(df: pd.DataFrame, market: str) -> DayPanel:
+    start, minutes = SESSIONS.get(market.upper(), ("09:30", 390))
+    return build_session_panel(df, start, minutes)

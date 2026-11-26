@@ -9,7 +9,7 @@ dashboard.
 > [docs/OWN_CAPITAL.md](docs/OWN_CAPITAL.md) — trading your own money without a prop firm (€500 + €100/month,
 > 1/3/5/10-year projections vs an index ETF). [docs/AGGRESSIVE_SYSTEM.md](docs/AGGRESSIVE_SYSTEM.md) — the
 > max-speed Topstep system: massive edge search, fleet scaling, payout flywheel. [docs/SMALL_BUDGET.md](docs/SMALL_BUDGET.md) —
-> the plan when you start with €300. Monte Carlo tables: [docs/results/](docs/results/).
+> the plan when you start with €300. **[docs/PLAN_4K.md](docs/PLAN_4K.md) — the plan for $4,000/month.** Monte Carlo tables: [docs/results/](docs/results/).
 
 ## Main findings
 
@@ -48,7 +48,8 @@ engine/                     Python quant engine (package: qtengine)
   qtengine/api/main.py      FastAPI service (REST + WebSocket)
   scripts/                  prop_economics.py · portfolio_economics.py · sizing_policies.py · own_capital_growth.py
                             edge_search.py · aggressive_topstep.py · two_phase_plan.py · small_budget.py
-  tests/                    50 tests
+                            fifty_k_plan.py · find_4k_plan.py (real-data pipeline) · best_4k_plan.py
+  tests/                    54 tests
 web/                        Next.js 15 command center (Fleet command, Research lab, Overview, Risk, Analytics, Journal,
                             Backtest, Prop simulator, Growth planner)
 docs/                       design, research, generated results

@@ -24,18 +24,36 @@ RTH_MINUTES = 390
 
 
 def load_bars(path: str | Path, tz_in: str = "UTC") -> pd.DataFrame:
-    """Load OHLCV from CSV or Parquet. Expects a timestamp column (ts/timestamp/datetime/ts_event)."""
+    """Load 1-minute OHLCV from CSV or Parquet.
+
+    Understands: generic (ts/timestamp/datetime/time/date), Databento (ts_event, ISO or integer ns,
+    optional `symbol` column — the most-traded contract per day is kept, i.e. a volume roll), and
+    Dukascopy web export ("Gmt time" as dd.mm.yyyy HH:MM:SS.fff)."""
     path = Path(path)
     df = pd.read_parquet(path) if path.suffix in {".parquet", ".pq"} else pd.read_csv(path)
-    ts_col = next((c for c in ("ts", "timestamp", "datetime", "ts_event", "time", "date") if c in df.columns), None)
+    df.columns = [c.strip().lower() for c in df.columns]
+    ts_col = next((c for c in ("ts_event", "ts", "timestamp", "datetime", "gmt time", "local time", "time", "date")
+                   if c in df.columns), None)
     if ts_col is None:
         raise ValueError("No timestamp column found")
-    idx = pd.to_datetime(df[ts_col], utc=False)
-    if idx.dt.tz is None:
+    raw = df[ts_col]
+    if pd.api.types.is_integer_dtype(raw):
+        mag = float(raw.abs().max())
+        unit = "ns" if mag > 1e17 else "us" if mag > 1e14 else "ms" if mag > 1e11 else "s"
+        idx = pd.to_datetime(raw, unit=unit, utc=True)
+    elif raw.astype(str).str.match(r"^\d{2}\.\d{2}\.\d{4}").all():
+        idx = pd.to_datetime(raw.astype(str).str.replace(r" GMT[+-]\d{4}$", "", regex=True), format="%d.%m.%Y %H:%M:%S.%f")
+    else:
+        idx = pd.to_datetime(raw, utc=False)
+    if getattr(idx.dt, "tz", None) is None:
         idx = idx.dt.tz_localize(tz_in)
     df = df.drop(columns=[ts_col])
     df.index = pd.DatetimeIndex(idx).tz_convert(NY)
-    df.columns = [c.lower() for c in df.columns]
+    if "symbol" in df.columns and df["symbol"].nunique() > 1:
+        day = df.index.date
+        vol = df.groupby([day, df["symbol"]])["volume"].sum()
+        best = vol.groupby(level=0).idxmax().map(lambda t: t[1])
+        df = df[df["symbol"].to_numpy() == best.reindex(day).to_numpy()]
     missing = {"open", "high", "low", "close"} - set(df.columns)
     if missing:
         raise ValueError(f"Missing columns: {missing}")

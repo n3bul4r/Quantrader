@@ -117,9 +117,25 @@ class MarketFeatures:
         return f
 
 
+def _fit_session(p: dict, M: int) -> dict:
+    """Clamp minute-based parameters to the market's session length (equity = 390, crude = 330, gold = 310)."""
+    q = dict(p)
+    for k in ("exit_min",):
+        if k in q:
+            q[k] = min(q[k], M - 1)
+    for k in ("last_entry", "signal_min"):
+        if k in q:
+            q[k] = min(q[k], M - 30)          # equity: 360 = 15:30 ET, unchanged
+    for k in ("first_dec", "or_len", "start_min"):
+        if k in q:
+            q[k] = min(q[k], M - 61)
+    return q
+
+
 def run_config(mf: MarketFeatures, fam: str, p: dict) -> np.ndarray:
     P = mf.panel
     D = P.n_days
+    p = _fit_session(p, P.close.shape[1])
     out = np.zeros((D * 4 + 8, K.NCOL))
     if fam == "NAM":
         n = K.noise_momentum(P.open, P.high, P.low, P.close, mf.vwap, mf.sig[p["lookback"]], P.day_open, P.prev_close,
@@ -132,7 +148,7 @@ def run_config(mf: MarketFeatures, fam: str, p: dict) -> np.ndarray:
                             p["direction"], 4 * 0.25, out)
     elif fam == "VWR":
         n = K.vwap_reversion(P.open, P.high, P.low, P.close, mf.vwap, mf.vsd, mf.sig[p["lookback"]], P.day_open,
-                             P.prev_close, mf.regime, p["start_min"], p["last_entry"], 389, p["band_k"], p["stop_k"],
+                             P.prev_close, mf.regime, p["start_min"], p["last_entry"], P.close.shape[1] - 1, p["band_k"], p["stop_k"],
                              p["target_mode"], p["time_stop"], p["max_entries"], p["regime_filter"], p["inside_noise"], out)
     elif fam == "LDM":
         n = K.late_momentum(P.open, P.high, P.low, P.close, P.prev_close, mf.regime, p["signal_min"], p["exit_min"],
