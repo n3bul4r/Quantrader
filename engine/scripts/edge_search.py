@@ -36,7 +36,8 @@ def main():
     a = ap.parse_args()
 
     if a.data:
-        panel = build_panel(load_bars(a.data))
+        from qtengine.features import market_panel
+        panel = market_panel(load_bars(a.data), a.symbol)
         source = f"real data: {a.data}"
     else:
         panel = build_panel(synthetic_bars(n_days=a.days, momentum=a.momentum, seed=a.seed))

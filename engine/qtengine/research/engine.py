@@ -105,13 +105,14 @@ class MarketFeatures:
     sig: dict = field(default_factory=dict)
     point_value: float = 5.0
     cost_rt: float = 3.9
+    tick: float = 0.25
 
     @classmethod
     def build(cls, panel: DayPanel, symbol: str, lookbacks=(7, 14, 21), cost_rt: float | None = None):
         ins = get_instrument(symbol)
         v, sd = session_vwap(panel)
         f = cls(symbol, panel, v, sd, vol_regime(panel).astype(np.int64), {},
-                ins.point_value, ins.cost_rt() if cost_rt is None else cost_rt)
+                ins.point_value, ins.cost_rt() if cost_rt is None else cost_rt, ins.tick_size)
         for lb in lookbacks:
             f.sig[lb] = noise_sigma(panel, lb)
         return f
@@ -145,7 +146,7 @@ def run_config(mf: MarketFeatures, fam: str, p: dict) -> np.ndarray:
     elif fam == "ORB":
         n = K.opening_range(P.open, P.high, P.low, P.close, P.day_open, mf.regime, p["or_len"], p["last_entry"],
                             p["exit_min"], p["stop_frac"], p["target_r"], p["max_entries"], p["regime_filter"],
-                            p["direction"], 4 * 0.25, out)
+                            p["direction"], 4 * mf.tick, out)
     elif fam == "VWR":
         n = K.vwap_reversion(P.open, P.high, P.low, P.close, mf.vwap, mf.vsd, mf.sig[p["lookback"]], P.day_open,
                              P.prev_close, mf.regime, p["start_min"], p["last_entry"], P.close.shape[1] - 1, p["band_k"], p["stop_k"],
@@ -161,7 +162,7 @@ def run_config(mf: MarketFeatures, fam: str, p: dict) -> np.ndarray:
 def trades_to_r(tr: np.ndarray, mf: MarketFeatures, min_risk_ticks: float = 4) -> tuple[np.ndarray, np.ndarray]:
     """Net R per trade (1R = initial stop distance, costs charged in R) and validity mask."""
     risk = np.abs(tr[:, 4] - tr[:, 6])
-    ok = risk >= min_risk_ticks * 0.25
+    ok = risk >= min_risk_ticks * mf.tick
     r = np.where(ok, tr[:, 1] * (tr[:, 5] - tr[:, 4]) / np.maximum(risk, 1e-9) - mf.cost_rt / (np.maximum(risk, 1e-9) * mf.point_value), 0.0)
     return r, ok
 

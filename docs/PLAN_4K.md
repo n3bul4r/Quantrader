@@ -1,5 +1,15 @@
 # The plan for $4,000 a month, starting from €300
 
+> **REAL-DATA UPDATE (2026-11-26) — read [REAL_DATA_RESULTS.md](REAL_DATA_RESULTS.md) first.**
+> * Tested on 1-minute data for 2018–2026, only the **Nasdaq-100** shows an edge after costs (out-of-sample Sharpe
+>   ≈ 0.7). The S&P 500, gold, crude and EUR/USD do not.
+> * The Nasdaq edge pays through rare large winners, with 30R+ drawdowns. Topstep accounts (4R of room at $500
+>   risk) usually die before those winners arrive.
+> * On the real trades, every plan below has a **negative median** and a 0–4 % chance of $4k/month.
+> * The tables below are the assumption-based study, kept for reference. They are **not** supported by the
+>   real-data test.
+
+
 *2026-11-26. Simulations: [results/find_4k_plan_assumed.md](results/find_4k_plan_assumed.md) (162-plan search),
 [results/best_4k_plan.md](results/best_4k_plan.md) (deep dive). Scripts: `engine/scripts/find_4k_plan.py`,
 `engine/scripts/best_4k_plan.py`.*

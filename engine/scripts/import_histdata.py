@@ -25,8 +25,10 @@ MAP = {"SPXUSD": "MES", "NSXUSD": "MNQ", "WTIUSD": "MCL", "XAUUSD": "MGC", "EURU
 
 
 def parse_ascii(text: str) -> pd.DataFrame:
-    df = pd.read_csv(io.StringIO(text), sep=";", header=None, names=["dt", "open", "high", "low", "close", "volume"])
-    ts = pd.to_datetime(df["dt"].astype(str).str.strip(), format="%Y%m%d %H%M%S")
+    df = pd.read_csv(io.StringIO(text), sep=";", header=None, names=["dt", "open", "high", "low", "close", "volume"],
+                     dtype={"dt": str})
+    df = df[df["dt"].str.strip().str.match(r"^\d{8} \d{6}$", na=False)]      # skip status/copyright lines
+    ts = pd.to_datetime(df["dt"].str.strip(), format="%Y%m%d %H%M%S")
     ts = ts.dt.tz_localize("Etc/GMT+5")          # fixed EST (POSIX sign convention: GMT+5 == UTC−5)
     out = df[["open", "high", "low", "close", "volume"]].astype(float)
     out.insert(0, "ts_event", ts.dt.tz_convert("UTC"))
@@ -38,7 +40,7 @@ def read_any(path: Path) -> list[pd.DataFrame]:
     if path.suffix.lower() == ".zip":
         with zipfile.ZipFile(path) as z:
             for name in z.namelist():
-                if name.lower().endswith((".csv", ".txt")) and "readme" not in name.lower():
+                if name.lower().endswith(".csv"):            # the .txt in each zip is a status report
                     frames.append(parse_ascii(z.read(name).decode("utf-8", errors="ignore")))
     elif path.suffix.lower() in (".csv", ".txt"):
         frames.append(parse_ascii(path.read_text(errors="ignore")))
