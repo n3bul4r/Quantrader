@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens (RGB triplets so Tailwind alpha modifiers work). Dark is the default. */
+:root,
+:root[data-theme="dark"] {
+  --bg: 9 12 17;
+  --panel: 16 21 29;
+  --panel2: 22 29 39;
+  --line: 34 44 58;
+  --fg: 226 232 240;
+  --muted: 140 152 170;
+  --accent: 45 212 191;
+  --pos: 34 197 94;
+  --neg: 239 68 68;
+  --warn: 245 158 11;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: 246 247 249;
+  --panel: 255 255 255;
+  --panel2: 241 244 247;
+  --line: 222 227 233;
+  --fg: 17 24 39;
+  --muted: 100 112 128;
+  --accent: 13 148 136;
+  --pos: 22 163 74;
+  --neg: 220 38 38;
+  --warn: 217 119 6;
+  color-scheme: light;
+}
+
+html, body { background: rgb(var(--bg)); color: rgb(var(--fg)); }
+body { font-feature-settings: "tnum" 1; -webkit-font-smoothing: antialiased; }
+
+.num { font-variant-numeric: tabular-nums; }
+.card { @apply rounded-xl border border-line bg-panel p-4; }
+.label { @apply text-[11px] uppercase tracking-wider text-muted; }
+.input { @apply w-full rounded-md border border-line bg-panel2 px-2.5 py-1.5 text-sm outline-none focus:border-accent; }
+.btn { @apply inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 text-sm font-medium text-bg hover:opacity-90 disabled:opacity-50; }
+.btn-ghost { @apply inline-flex items-center gap-1.5 rounded-md border border-line px-3 py-1.5 text-sm hover:bg-panel2; }
+table.data { @apply w-full text-sm; }
+table.data th { @apply border-b border-line px-2 py-1.5 text-left text-[11px] font-medium uppercase tracking-wider text-muted; }
+table.data td { @apply border-b border-line/60 px-2 py-1.5 num; }

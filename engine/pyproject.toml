@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qtengine"
+version = "0.1.0"
+description = "Quant engine for prop-firm futures trading: strategies, backtester, risk engine, prop-firm simulator"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.1",
+  "scipy>=1.11",
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.27",
+  "pydantic>=2.5",
+  "pyyaml>=6.0",
+  "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[tool.setuptools.packages.find]
+include = ["qtengine*"]
+
+[tool.setuptools.package-data]
+qtengine = ["prop/presets/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

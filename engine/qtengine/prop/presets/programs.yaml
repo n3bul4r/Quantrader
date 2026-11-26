@@ -1,0 +1,221 @@
+# Prop-firm program presets.
+#
+# !!! These are PLANNING VALUES compiled 2026-11 from Topstep's help center and
+# third-party summaries that partly disagree with each other (see docs/RESEARCH.md).
+# Firms change rules several times a year. Verify every number on the firm's own
+# rulebook / dashboard before buying, and edit this file. The simulator is only as
+# good as these inputs.
+#
+# Conventions: all money in USD, relative to the phase's starting balance.
+#   drawdown_type: eod_trailing | intraday_trailing | static
+#   lock_level:    highest level (relative to start) the max-loss level can trail to;
+#                  0 = MLL stops at the starting balance; null = trails forever.
+#   dll_action:    pause (day over, account survives) | fail (account lost)
+#   consistency_pct (eval): best day must be <= pct * total profit to pass
+#   payout_consistency_pct (funded): best day since last payout <= pct * profit since last payout
+#   mll_after_payout: unchanged | lock_at_start (MLL moves to the starting balance)
+
+topstep_50k:
+  firm: Topstep
+  name: "Topstep 50K Trading Combine -> Express Funded (Standard payout path)"
+  account_size: 50000
+  eval_fee: 49            # monthly subscription (verify current price / promos)
+  eval_fee_recurring_days: 21
+  activation_fee: 149     # XFA activation (some plans have none — verify)
+  max_accounts: 5
+  automation: "API bots allowed on Combine/XFA via TopstepX (ProjectX); not on Live Funded; no HFT"
+  last_checked: "2026-11 (secondary sources; MLL-after-payout and caps unverified)"
+  evaluation:
+    profit_target: 3000
+    max_loss: 2000
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null   # reported optional on standard Combine; guard enforces our own
+    dll_action: pause
+    consistency_pct: 0.50
+    min_trading_days: 2
+    max_micros: 50
+  funded:
+    profit_target: null
+    max_loss: 2000
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 0
+    max_micros: 50
+    scaling_plan: [[0, 20], [1500, 30], [2000, 50]]   # [profit >=, max micros]
+    payout_winning_days: 5
+    winning_day_threshold: 150
+    payout_fraction: 0.50
+    payout_cap: 2000          # reported per-cycle cap for 50K standard path (Apr 2026) — verify
+    payout_min: 125
+    profit_split: 0.90
+    full_split_first: 0
+    payout_consistency_pct: null
+    mll_after_payout: lock_at_start
+
+topstep_150k:
+  firm: Topstep
+  name: "Topstep 150K Trading Combine -> Express Funded (Standard payout path)"
+  account_size: 150000
+  eval_fee: 149
+  eval_fee_recurring_days: 21
+  activation_fee: 149
+  max_accounts: 5
+  automation: "as topstep_50k"
+  last_checked: "2026-11 (secondary sources)"
+  evaluation:
+    profit_target: 9000
+    max_loss: 4500
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: 0.50
+    min_trading_days: 2
+    max_micros: 150
+  funded:
+    profit_target: null
+    max_loss: 4500
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 0
+    max_micros: 150
+    scaling_plan: [[0, 30], [1500, 50], [2000, 100], [3000, 150]]
+    payout_winning_days: 5
+    winning_day_threshold: 150
+    payout_fraction: 0.50
+    payout_cap: 5000
+    payout_min: 125
+    profit_split: 0.90
+    full_split_first: 0
+    payout_consistency_pct: null
+    mll_after_payout: lock_at_start
+
+topstep_50k_static_labs:
+  firm: Topstep
+  name: "Topstep Labs 50K Static Combine (static MLL, mandatory DLL)"
+  account_size: 50000
+  eval_fee: 149
+  eval_fee_recurring_days: null
+  activation_fee: 0
+  max_accounts: 5
+  automation: "as topstep_50k"
+  last_checked: "2026-11 (Topstep Labs page + reseller summary; funded side assumed = standard XFA)"
+  evaluation:
+    profit_target: 4000
+    max_loss: 2000
+    drawdown_type: static
+    lock_level: null
+    daily_loss_limit: 1000
+    dll_action: pause
+    consistency_pct: 0.55
+    min_trading_days: 2
+    max_micros: 50
+  funded:
+    profit_target: null
+    max_loss: 2000
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 0
+    max_micros: 50
+    scaling_plan: [[0, 20], [1500, 30], [2000, 50]]
+    payout_winning_days: 5
+    winning_day_threshold: 150
+    payout_fraction: 0.50
+    payout_cap: 2000
+    payout_min: 125
+    profit_split: 0.90
+    full_split_first: 0
+    payout_consistency_pct: null
+    mll_after_payout: lock_at_start
+
+apex_50k_eod:
+  firm: Apex Trader Funding
+  name: "Apex 4.0 50K EOD -> Performance Account"
+  account_size: 50000
+  eval_fee: 100           # one-time; Apex list prices swing with near-permanent discounts — enter what you pay
+  eval_fee_recurring_days: null
+  activation_fee: 99      # verify
+  max_accounts: 20
+  automation: "Reportedly semi-automated only on PA (no fully automated bots) — verify before automating"
+  last_checked: "2026-11 (secondary sources disagree on several items)"
+  evaluation:
+    profit_target: 3000
+    max_loss: 2000
+    drawdown_type: eod_trailing
+    lock_level: 100
+    daily_loss_limit: 1000
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 1
+    max_micros: 60
+  funded:
+    profit_target: null
+    max_loss: 2000
+    drawdown_type: eod_trailing
+    lock_level: 100
+    daily_loss_limit: 1000
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 0
+    max_micros: 60
+    payout_winning_days: 5
+    winning_day_threshold: 250
+    payout_fraction: 1.0     # withdraw above the safety net, subject to cap
+    payout_cap: 1500
+    payout_min: 500
+    profit_split: 0.90
+    full_split_first: 25000
+    payout_consistency_pct: 0.50
+    mll_after_payout: unchanged
+    payout_reserve: 2100     # profit that must remain in the account (safety net) — verify
+
+apex_50k_intraday:
+  firm: Apex Trader Funding
+  name: "Apex 4.0 50K Intraday trailing -> Performance Account"
+  account_size: 50000
+  eval_fee: 90
+  eval_fee_recurring_days: null
+  activation_fee: 99
+  max_accounts: 20
+  automation: "as apex_50k_eod"
+  last_checked: "2026-11 (secondary sources)"
+  evaluation:
+    profit_target: 3000
+    max_loss: 2500
+    drawdown_type: intraday_trailing
+    lock_level: 100
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 1
+    max_micros: 100
+  funded:
+    profit_target: null
+    max_loss: 2500
+    drawdown_type: intraday_trailing
+    lock_level: 100
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 0
+    max_micros: 100
+    payout_winning_days: 5
+    winning_day_threshold: 200
+    payout_fraction: 1.0
+    payout_cap: 1500
+    payout_min: 500
+    profit_split: 0.90
+    full_split_first: 25000
+    payout_consistency_pct: 0.50
+    mll_after_payout: unchanged
+    payout_reserve: 2600
