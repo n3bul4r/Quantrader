@@ -5,6 +5,7 @@ Date: 2026-11-26. Research and sources: [RESEARCH.md](RESEARCH.md). All Monte Ca
 `engine/scripts/prop_economics.py` and `engine/scripts/portfolio_economics.py`
 (full tables: [results/prop_economics.md](results/prop_economics.md), [results/portfolio_economics.md](results/portfolio_economics.md)).
 Trading your own money instead of a prop account: [OWN_CAPITAL.md](OWN_CAPITAL.md).
+Max-speed mandate (aggressive sizing, edge search, fleets, flywheel): [AGGRESSIVE_SYSTEM.md](AGGRESSIVE_SYSTEM.md).
 
 ---
 

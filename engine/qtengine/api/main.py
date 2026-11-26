@@ -37,6 +37,10 @@ ROOT = Path(__file__).resolve().parents[3]
 app = FastAPI(title="Quantrader engine", version="0.1.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
+from .command import router as command_router  # noqa: E402
+
+app.include_router(command_router)
+
 
 # ----------------------------------------------------------------------------- schemas
 class TradeModelIn(BaseModel):

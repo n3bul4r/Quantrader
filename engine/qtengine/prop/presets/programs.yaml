@@ -219,3 +219,170 @@ apex_50k_intraday:
     payout_consistency_pct: 0.50
     mll_after_payout: unchanged
     payout_reserve: 2600
+
+# ---------------------------------------------------------------------------
+# Added for the aggressive study (2026 rules, partly secondary sources — verify).
+# Post-28-Apr-2026 XFA caps: Standard $2k/$3k/$5k (50K/100K/150K);
+# Consistency path: ≥3 trading days, best day ≤ 40 % of window profit, caps $3k (50K) / $6k (150K).
+topstep_100k:
+  firm: Topstep
+  name: "Topstep 100K Trading Combine -> Express Funded (Standard path)"
+  account_size: 100000
+  eval_fee: 99
+  eval_fee_recurring_days: 21
+  activation_fee: 149
+  max_accounts: 5
+  automation: "as topstep_50k"
+  last_checked: "2026-11 (secondary sources; scaling plan approximate)"
+  evaluation:
+    profit_target: 6000
+    max_loss: 3000
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: 0.50
+    min_trading_days: 2
+    max_micros: 100
+  funded:
+    profit_target: null
+    max_loss: 3000
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 0
+    max_micros: 100
+    scaling_plan: [[0, 30], [1500, 40], [2000, 50], [3000, 100]]
+    payout_winning_days: 5
+    winning_day_threshold: 150
+    payout_fraction: 0.50
+    payout_cap: 3000
+    payout_min: 125
+    profit_split: 0.90
+    full_split_first: 0
+    payout_consistency_pct: null
+    mll_after_payout: lock_at_start
+
+topstep_50k_consistency:
+  firm: Topstep
+  name: "Topstep 50K -> Express Funded (Consistency path: 3 days, 40 %)"
+  account_size: 50000
+  eval_fee: 49
+  eval_fee_recurring_days: 21
+  activation_fee: 149
+  max_accounts: 5
+  automation: "as topstep_50k"
+  last_checked: "2026-11 (secondary sources)"
+  evaluation:
+    profit_target: 3000
+    max_loss: 2000
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: 0.50
+    min_trading_days: 2
+    max_micros: 50
+  funded:
+    profit_target: null
+    max_loss: 2000
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 0
+    max_micros: 50
+    scaling_plan: [[0, 20], [1500, 30], [2000, 50]]
+    payout_winning_days: 3
+    winning_day_threshold: -1000000000
+    payout_fraction: 0.50
+    payout_cap: 3000
+    payout_min: 125
+    profit_split: 0.90
+    full_split_first: 0
+    payout_consistency_pct: 0.40
+    mll_after_payout: lock_at_start
+
+topstep_150k_consistency:
+  firm: Topstep
+  name: "Topstep 150K -> Express Funded (Consistency path: 3 days, 40 %)"
+  account_size: 150000
+  eval_fee: 149
+  eval_fee_recurring_days: 21
+  activation_fee: 149
+  max_accounts: 5
+  automation: "as topstep_50k"
+  last_checked: "2026-11 (secondary sources)"
+  evaluation:
+    profit_target: 9000
+    max_loss: 4500
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: 0.50
+    min_trading_days: 2
+    max_micros: 150
+  funded:
+    profit_target: null
+    max_loss: 4500
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 0
+    max_micros: 150
+    scaling_plan: [[0, 30], [1500, 50], [2000, 100], [3000, 150]]
+    payout_winning_days: 3
+    winning_day_threshold: -1000000000
+    payout_fraction: 0.50
+    payout_cap: 6000
+    payout_min: 125
+    profit_split: 0.90
+    full_split_first: 0
+    payout_consistency_pct: 0.40
+    mll_after_payout: lock_at_start
+
+topstep_150k_uncapped_hypothetical:
+  firm: Topstep
+  name: "HYPOTHETICAL upper bound: 150K with no payout cap (proxy for a Live Funded Account)"
+  account_size: 150000
+  eval_fee: 149
+  eval_fee_recurring_days: 21
+  activation_fee: 149
+  max_accounts: 1
+  automation: "Live Funded: API bots reportedly NOT allowed"
+  last_checked: "hypothetical sensitivity case, not a real product"
+  evaluation:
+    profit_target: 9000
+    max_loss: 4500
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: null
+    dll_action: pause
+    consistency_pct: 0.50
+    min_trading_days: 2
+    max_micros: 150
+  funded:
+    profit_target: null
+    max_loss: 4500
+    drawdown_type: eod_trailing
+    lock_level: 0
+    daily_loss_limit: 4500
+    dll_action: pause
+    consistency_pct: null
+    min_trading_days: 0
+    max_micros: 150
+    payout_winning_days: 5
+    winning_day_threshold: 150
+    payout_fraction: 0.50
+    payout_cap: null
+    payout_min: 125
+    profit_split: 0.90
+    full_split_first: 0
+    payout_consistency_pct: null
+    mll_after_payout: lock_at_start

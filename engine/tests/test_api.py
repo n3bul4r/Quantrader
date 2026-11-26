@@ -34,3 +34,20 @@ def test_backtest_and_demo_flow():
     assert a["trades"]["n"] > 0 and a["by_session"]
     s = c.get("/api/account/status").json()
     assert "buffer_to_mll" in s["status"] and "guard" in s
+
+
+def test_command_center_endpoints():
+    import time as _t
+    j = c.post("/api/research/search", json={"days": 400, "nam": 60, "orb": 20, "vwr": 20, "ldm": False}).json()["job"]
+    for _ in range(120):
+        st = c.get(f"/api/research/jobs/{j}").json()
+        if st["stage"] in ("done", "error"):
+            break
+        _t.sleep(0.5)
+    assert st["stage"] == "done", st.get("error")
+    assert st["result"]["leaderboard"] and "pbo" in st["result"]["verdict"]
+    f = c.post("/api/fleet/simulate", json={"slots": 2, "years": 1, "n_paths": 100}).json()
+    assert "milestones" in f and len(f["fan"]) == 12
+    assert c.post("/api/fleet/demo").json()["accounts"]
+    b = c.get("/api/fleet/accounts").json()
+    assert b["totals"]["accounts"] == 3 and b["accounts"][0]["risk_per_trade"] > 0

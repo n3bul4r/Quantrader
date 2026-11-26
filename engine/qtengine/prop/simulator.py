@@ -130,6 +130,18 @@ class SimSizing:
     min_risk: float = 75.0
     max_risk: float = 600.0
     round_up_tolerance: float = 1.25
+    funded_risk_dollars: float | None = None  # different fixed risk once funded (None = same)
+    up_frac: float = 0.0                      # funded: add up_frac * (buffer - max_loss) to risk (scale UP only)
+    up_max_risk: float = 5000.0
+
+
+@dataclass
+class PayoutPolicy:
+    """When to pull money out of a funded account.
+    min_profit_to_request: only request once profit above start >= this (builds a cushion first)
+    request_fraction: request this fraction of the allowed amount"""
+    min_profit_to_request: float = 0.0
+    request_fraction: float = 1.0
 
 
 @dataclass
@@ -151,6 +163,10 @@ PRESET_MODELS = {
     "zero_edge": TradeModel(name="zero_edge", win_rate=0.333),
     # 'Prop-friendly' high-win-rate scalper with the SAME gross edge per R as S1_planning,
     # 3 trades/day, $50 stops: costs eat ~90% of the edge
+    # Multi-market intraday-momentum basket (ES/NQ/CL/GC micros): same per-trade edge, but
+    # ≈2.4 effectively independent bets/day (equity indices count as ~1.2 because ρ≈0.85)
+    "basket_planning": TradeModel(name="basket_planning", win_rate=0.37, trades_per_day=2.4, max_trades_per_day=6),
+    "basket_optimistic": TradeModel(name="basket_optimistic", win_rate=0.40, trades_per_day=2.4, max_trades_per_day=6),
     "scalper_planning": TradeModel(name="scalper_planning", win_rate=0.62, avg_win_r=0.75, win_cv=0.3,
                                    avg_loss_r=1.0, loss_sd=0.05, trades_per_day=3.0, max_trades_per_day=6,
                                    stop_dollars=50.0, stop_cv=0.2),
@@ -177,9 +193,12 @@ def simulate_lifecycle(
     single_attempt: bool = False,
     seed: int = 0,
     record_paths: bool = True,
+    payout_policy: PayoutPolicy | None = None,
+    return_cash_path: bool = False,
 ) -> dict:
     sizing = sizing or SimSizing()
     guard = guard or SimGuard()
+    payout_policy = payout_policy or PayoutPolicy()
     rng = np.random.default_rng(seed)
     E, F = program.evaluation, program.funded
     P = n_paths
@@ -220,7 +239,7 @@ def simulate_lifecycle(
     first_payout_day = np.full(P, -1)
     outcome = np.zeros(P, dtype=int)        # single_attempt: 1 pass, -1 fail, 0 unresolved
     funded_days = np.zeros(P, dtype=int)
-    cash_path = np.zeros((horizon_days, P)) if record_paths else None
+    cash_path = np.zeros((horizon_days, P)) if (record_paths or return_cash_path) else None
     day_pnls_eval, day_pnls_fund = [], []
 
     cost = model.cost_per_contract
@@ -245,7 +264,15 @@ def simulate_lifecycle(
         if guard.internal_daily_stop is not None:
             istop = guard.internal_daily_stop
         elif guard.daily_stop_r is not None:
-            base = sizing.risk_dollars if sizing.mode == "fixed" else sizing.max_risk
+            if sizing.mode == "fixed":
+                base = np.full(P, sizing.risk_dollars)
+                if sizing.funded_risk_dollars is not None:
+                    base = np.where(is_f, sizing.funded_risk_dollars, base)
+                if sizing.up_frac > 0:
+                    base = np.where(is_f, np.minimum(base + sizing.up_frac * np.maximum(p - mll - maxloss, 0.0),
+                                                     sizing.up_max_risk), base)
+            else:
+                base = sizing.max_risk
             istop = guard.daily_stop_r * base
         else:
             istop = INF
@@ -254,7 +281,10 @@ def simulate_lifecycle(
         stopped = ~active
         failed = np.zeros(P, dtype=bool)
         consec = np.zeros(P, dtype=int)
-        n_tr = np.minimum(rng.poisson(model.trades_per_day, P), model.max_trades_per_day)
+        if hasattr(model, "n_trades"):
+            n_tr = model.n_trades(rng, P)
+        else:
+            n_tr = np.minimum(rng.poisson(model.trades_per_day, P), model.max_trades_per_day)
         traded = active & (n_tr > 0)
         for k in range(model.max_trades_per_day):
             act = ~stopped & (k < n_tr)
@@ -264,6 +294,11 @@ def simulate_lifecycle(
             buffer = eq - mll
             if sizing.mode == "fixed":
                 risk = np.full(P, sizing.risk_dollars)
+                if sizing.funded_risk_dollars is not None:
+                    risk = np.where(is_f, sizing.funded_risk_dollars, risk)
+                if sizing.up_frac > 0:
+                    extra = sizing.up_frac * np.maximum(buffer - maxloss, 0.0)
+                    risk = np.where(is_f, np.minimum(risk + extra, sizing.up_max_risk), risk)
             else:
                 risk = np.clip(sizing.fraction * buffer, sizing.min_risk, sizing.max_risk)
                 risk = np.where(buffer < 0.5 * maxloss, risk * 0.5, risk)
@@ -324,7 +359,9 @@ def simulate_lifecycle(
             amount = np.minimum(amount, F.payout_cap)
         pc_ok = np.ones(P, dtype=bool) if F.payout_consistency_pct is None else \
             (best_since <= F.payout_consistency_pct * np.maximum(prof_since, 1e-9))
+        amount = amount * payout_policy.request_fraction
         elig = fu & ~failed & (win_days >= F.payout_winning_days) & (amount >= max(F.payout_min, 1e-9)) & pc_ok
+        elig &= p >= payout_policy.min_profit_to_request
         if elig.any():
             remaining_full = np.maximum(F.full_split_first - paid_gross, 0.0)
             at_full = np.minimum(amount, remaining_full)
@@ -365,7 +402,7 @@ def simulate_lifecycle(
             win_days = np.where(reset, 0, win_days)
             prof_since = np.where(reset, 0.0, prof_since)
             best_since = np.where(reset, 0.0, best_since)
-        if record_paths:
+        if cash_path is not None:
             cash_path[d] = paid_net - fees
 
     net = (paid_net - fees) * n_accounts
@@ -375,6 +412,7 @@ def simulate_lifecycle(
         "model": model.summary(),
         "sizing": asdict(sizing),
         "guard": asdict(guard),
+        "payout_policy": asdict(payout_policy),
         "horizon_days": horizon_days,
         "n_paths": n_paths,
         "n_accounts": n_accounts,
@@ -407,6 +445,8 @@ def simulate_lifecycle(
         "funded_day_pnl_mean": float(fd.mean()) if len(fd) else None,
         "net_per_trading_day_mean": float(net.mean() / horizon_days),
     })
+    if return_cash_path:
+        res["_cash_path"] = cash_path
     if record_paths:
         pct = np.quantile(cash_path * n_accounts, [0.05, 0.25, 0.5, 0.75, 0.95], axis=1)
         res["cash_fan"] = [{"day": int(i), "p05": float(pct[0, i]), "p25": float(pct[1, i]), "p50": float(pct[2, i]),

@@ -1,12 +1,14 @@
 "use client";
 
 import clsx from "clsx";
-import { Activity, BarChart3, BookOpen, FlaskConical, Gauge, Moon, ShieldAlert, Sprout, Sun, Trophy } from "lucide-react";
+import { Activity, BarChart3, BookOpen, Cpu, FlaskConical, Gauge, Layers, Moon, ShieldAlert, Sprout, Sun, Trophy } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
 
 const NAV = [
+  { href: "/fleet", label: "Fleet command", icon: Layers },
+  { href: "/research", label: "Research lab", icon: Cpu },
   { href: "/", label: "Overview", icon: Gauge },
   { href: "/risk", label: "Risk", icon: ShieldAlert },
   { href: "/analytics", label: "Analytics", icon: BarChart3 },

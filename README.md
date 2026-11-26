@@ -7,7 +7,8 @@ dashboard.
 > **Read first:** [docs/SYSTEM_DESIGN.md](docs/SYSTEM_DESIGN.md) — strategies, risk engine, architecture,
 > roadmap and the honesty section. [docs/RESEARCH.md](docs/RESEARCH.md) — evidence and sources.
 > [docs/OWN_CAPITAL.md](docs/OWN_CAPITAL.md) — trading your own money without a prop firm (€500 + €100/month,
-> 1/3/5/10-year projections vs an index ETF). Monte Carlo tables: [docs/results/](docs/results/).
+> 1/3/5/10-year projections vs an index ETF). [docs/AGGRESSIVE_SYSTEM.md](docs/AGGRESSIVE_SYSTEM.md) — the
+> max-speed Topstep system: massive edge search, fleet scaling, payout flywheel. Monte Carlo tables: [docs/results/](docs/results/).
 
 ## Main findings
 
@@ -21,6 +22,10 @@ dashboard.
   validated on real data yet; that is roadmap step 1.
 * **Own money, no prop firm (€500 + €100/month):** with the planning edge, the 10-year median is about €20.6k vs
   €17.2k for an index ETF and €12.5k put in. After tax the two are nearly equal. With no edge it is about €7.8k.
+* **Max-speed Topstep mode:** run the edge on four markets, risk 35 % of the max-loss limit per trade, and use 5
+  decorrelated 150K slots. With the planning edge that gives a median of $231k cumulative net after 3 years and an
+  80 % chance of $100k. $1M in 3 years needs a much stronger edge or recycling payouts into your own account;
+  overall odds are about 5–10 %.
 
 ## Layout
 
@@ -34,14 +39,17 @@ engine/                     Python quant engine (package: qtengine)
   qtengine/metrics.py       expectancy, PF, Sharpe, PSR / Deflated Sharpe, MinTRL, breakdowns
   qtengine/validation.py    walk-forward, sign-flip permutation test, bootstrap CI, promotion gate
   qtengine/risk/            sizing (buffer, vol-target, Kelly, scaling policy) · ruin maths · live guard
-  qtengine/prop/            rule presets (YAML) · account rule tracker · lifecycle Monte Carlo
+  qtengine/prop/            rule presets (YAML) · account rule tracker · lifecycle Monte Carlo · fleet + flywheel
+  qtengine/research/        numba strategy kernels · massive search · CSCV/PBO · effective-trials deflated Sharpe
   qtengine/journal.py       automatic trade tagging (session, outcome, violations, revenge, news)
   qtengine/growth.py        own-capital growth Monte Carlo (contributions, vehicle granularity, tax) vs ETF
   qtengine/execution.py     BrokerAdapter contract + PaperBroker (TopstepX/Tradovate/Rithmic adapters: roadmap)
   qtengine/api/main.py      FastAPI service (REST + WebSocket)
   scripts/                  prop_economics.py · portfolio_economics.py · sizing_policies.py · own_capital_growth.py
+                            edge_search.py · aggressive_topstep.py
   tests/                    39 tests
-web/                        Next.js 15 dashboard (Overview, Risk, Analytics, Journal, Backtest, Prop simulator, Growth planner)
+web/                        Next.js 15 command center (Fleet command, Research lab, Overview, Risk, Analytics, Journal,
+                            Backtest, Prop simulator, Growth planner)
 docs/                       design, research, generated results
 ```
 

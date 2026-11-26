@@ -110,14 +110,14 @@ export function SweepChart({ data, height = 220 }: { data: { risk_dollars: numbe
   );
 }
 
-export function SmallLine({ data, x, y, height = 140 }: { data: any[]; x: string; y: string; height?: number }) {
+export function SmallLine({ data, x, y, height = 140, fmt = money }: { data: any[]; x: string; y: string; height?: number; fmt?: (v: number) => string }) {
   return (
     <ResponsiveContainer width="100%" height={height}>
       <LineChart data={data} margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
         {grid}
         <XAxis dataKey={x} {...axis} minTickGap={30} />
-        <YAxis {...axis} tickFormatter={money} width={64} />
-        <Tooltip {...tip} formatter={(v: number) => money(v)} />
+        <YAxis {...axis} tickFormatter={fmt} width={64} />
+        <Tooltip {...tip} formatter={(v: number) => fmt(v)} />
         <ReferenceLine y={0} stroke="rgb(var(--muted))" />
         <Line dataKey={y} stroke="rgb(var(--accent))" strokeWidth={2} dot={false} />
       </LineChart>

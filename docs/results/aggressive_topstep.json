@@ -1,0 +1,3295 @@
+{
+ "single": [
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 715.1898920001632,
+   "net_median": -365.9787988403684,
+   "net_p05": -1572.0,
+   "net_p95": 6556.185969628302,
+   "p_net_positive": 0.43533333333333335,
+   "pass_rate_per_attempt": 0.31973786324049325,
+   "evals_bought_mean": 8.505333333333333
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 38.71377675029627,
+   "net_median": -557.7809558044916,
+   "net_p05": -1388.2058941933633,
+   "net_p95": 3226.5954680580917,
+   "p_net_positive": 0.35,
+   "pass_rate_per_attempt": 0.32458037277314383,
+   "evals_bought_mean": 7.0873333333333335
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 1158.8140599840733,
+   "net_median": 3.4077991209883294,
+   "net_p05": -1625.0,
+   "net_p95": 7766.531734309773,
+   "p_net_positive": 0.5006666666666667,
+   "pass_rate_per_attempt": 0.31976904041792686,
+   "evals_bought_mean": 7.983333333333333
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 2731.2891220055,
+   "net_median": 981.8810950551288,
+   "net_p05": -2117.2958377677833,
+   "net_p95": 14019.510475507761,
+   "p_net_positive": 0.594,
+   "pass_rate_per_attempt": 0.24667173070003598,
+   "evals_bought_mean": 17.426
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 1193.5226237810054,
+   "net_median": 164.37198188685682,
+   "net_p05": -1631.2222723665918,
+   "net_p95": 7344.237276005746,
+   "p_net_positive": 0.5246666666666666,
+   "pass_rate_per_attempt": 0.24384579656293545,
+   "evals_bought_mean": 14.983333333333333
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 2984.2996007050815,
+   "net_median": 1130.7080756154924,
+   "net_p05": -2213.0,
+   "net_p95": 15023.393901366419,
+   "p_net_positive": 0.6166666666666667,
+   "pass_rate_per_attempt": 0.2459847501622323,
+   "evals_bought_mean": 17.168666666666667
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 3909.3320654162553,
+   "net_median": 1155.4972757783157,
+   "net_p05": -2754.1,
+   "net_p95": 20584.47611753102,
+   "p_net_positive": 0.592,
+   "pass_rate_per_attempt": 0.20309056778300733,
+   "evals_bought_mean": 25.224
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 2245.4918302690794,
+   "net_median": 854.2719095604511,
+   "net_p05": -2060.987796385427,
+   "net_p95": 12203.028507603743,
+   "p_net_positive": 0.6073333333333333,
+   "pass_rate_per_attempt": 0.20439056751703757,
+   "evals_bought_mean": 22.750666666666667
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 3927.684591329736,
+   "net_median": 1125.7771835129288,
+   "net_p05": -2758.0,
+   "net_p95": 20597.797490712634,
+   "p_net_positive": 0.594,
+   "pass_rate_per_attempt": 0.2031607629427793,
+   "evals_bought_mean": 25.183333333333334
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 4028.899156746067,
+   "net_median": 353.0,
+   "net_p05": -3697.0499999999997,
+   "net_p95": 24370.449999999993,
+   "p_net_positive": 0.5226666666666666,
+   "pass_rate_per_attempt": 0.16358341897910242,
+   "evals_bought_mean": 35.728
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 2781.7140311009466,
+   "net_median": 705.8524159854512,
+   "net_p05": -2850.0,
+   "net_p95": 17286.161095607702,
+   "p_net_positive": 0.588,
+   "pass_rate_per_attempt": 0.16337584123198803,
+   "evals_bought_mean": 33.653333333333336
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 4027.4682912295857,
+   "net_median": 353.0,
+   "net_p05": -3740.0,
+   "net_p95": 24370.449999999993,
+   "p_net_positive": 0.5246666666666666,
+   "pass_rate_per_attempt": 0.16360416626996974,
+   "evals_bought_mean": 35.71066666666667
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 450,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 1.2517849354071513,
+   "net_median": -1490.653021246173,
+   "net_p05": -2971.0,
+   "net_p95": 8196.909870197167,
+   "p_net_positive": 0.3293333333333333,
+   "pass_rate_per_attempt": 0.2712244558896827,
+   "evals_bought_mean": 8.845333333333333
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 450,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": -931.637064374092,
+   "net_median": -1691.8153436124649,
+   "net_p05": -2772.0,
+   "net_p95": 3783.5671016249,
+   "p_net_positive": 0.20266666666666666,
+   "pass_rate_per_attempt": 0.2703710609733358,
+   "evals_bought_mean": 7.874
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 450,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 746.1313026241638,
+   "net_median": -952.3008978058332,
+   "net_p05": -3020.0,
+   "net_p95": 10903.407863447947,
+   "p_net_positive": 0.4166666666666667,
+   "pass_rate_per_attempt": 0.2715669014084507,
+   "evals_bought_mean": 8.34
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 750,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 3002.7132725426472,
+   "net_median": 67.04771531848701,
+   "net_p05": -3764.0,
+   "net_p95": 20150.925424457288,
+   "p_net_positive": 0.5086666666666667,
+   "pass_rate_per_attempt": 0.22155570464501362,
+   "evals_bought_mean": 17.67
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 750,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 986.6527449590664,
+   "net_median": -458.38005522881485,
+   "net_p05": -3169.0,
+   "net_p95": 10063.452044068097,
+   "p_net_positive": 0.44133333333333336,
+   "pass_rate_per_attempt": 0.22214980882864094,
+   "evals_bought_mean": 16.034666666666666
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 750,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 3336.0895560247322,
+   "net_median": 464.1119186165979,
+   "net_p05": -3813.0,
+   "net_p95": 21283.94585634809,
+   "p_net_positive": 0.526,
+   "pass_rate_per_attempt": 0.2215924965076831,
+   "evals_bought_mean": 17.468666666666667
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 1050,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 4779.050784310693,
+   "net_median": 744.0636117056483,
+   "net_p05": -4755.0,
+   "net_p95": 30222.169395581815,
+   "p_net_positive": 0.548,
+   "pass_rate_per_attempt": 0.18798816410311092,
+   "evals_bought_mean": 25.75733333333333
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 1050,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 2518.853227689478,
+   "net_median": 195.8472796018657,
+   "net_p05": -3863.018979465135,
+   "net_p95": 17157.055805051365,
+   "p_net_positive": 0.5266666666666666,
+   "pass_rate_per_attempt": 0.18787020717154498,
+   "evals_bought_mean": 23.760666666666665
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 1050,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 4822.344056845987,
+   "net_median": 823.6127523569198,
+   "net_p05": -4755.0,
+   "net_p95": 30233.349999999988,
+   "p_net_positive": 0.5513333333333333,
+   "pass_rate_per_attempt": 0.18804423313211177,
+   "evals_bought_mean": 25.704
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 1500,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 5053.83397520658,
+   "net_median": -766.376893327938,
+   "net_p05": -6290.0,
+   "net_p95": 38174.5,
+   "p_net_positive": 0.4573333333333333,
+   "pass_rate_per_attempt": 0.153808390921793,
+   "evals_bought_mean": 36.02066666666666
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 1500,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 3262.1250528786327,
+   "net_median": -116.29418763768899,
+   "net_p05": -5300.0,
+   "net_p95": 25485.76734892044,
+   "p_net_positive": 0.49266666666666664,
+   "pass_rate_per_attempt": 0.15430437363942212,
+   "evals_bought_mean": 34.38333333333333
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_100k",
+   "risk": 1500,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 5034.551732029403,
+   "net_median": -752.9169613066742,
+   "net_p05": -6290.05,
+   "net_p95": 38174.5,
+   "p_net_positive": 0.45666666666666667,
+   "pass_rate_per_attempt": 0.15385341718127396,
+   "evals_bought_mean": 36.016
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 478.5123156707296,
+   "net_median": -1946.4110983743224,
+   "net_p05": -4470.0,
+   "net_p95": 14365.890008708056,
+   "p_net_positive": 0.35333333333333333,
+   "pass_rate_per_attempt": 0.2685966406068581,
+   "evals_bought_mean": 9.432666666666666
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": -1256.893089938576,
+   "net_median": -2387.7688829501076,
+   "net_p05": -4172.0,
+   "net_p95": 6023.821103835947,
+   "p_net_positive": 0.23266666666666666,
+   "pass_rate_per_attempt": 0.2665420878280812,
+   "evals_bought_mean": 8.59
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 1608.641317468331,
+   "net_median": -1185.8417537061016,
+   "net_p05": -4470.0,
+   "net_p95": 17510.941010029343,
+   "p_net_positive": 0.444,
+   "pass_rate_per_attempt": 0.26869216280402913,
+   "evals_bought_mean": 8.910666666666666
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 5054.800090280167,
+   "net_median": 598.4930638371247,
+   "net_p05": -5364.0,
+   "net_p95": 31416.82601242835,
+   "p_net_positive": 0.532,
+   "pass_rate_per_attempt": 0.21919000757002272,
+   "evals_bought_mean": 18.4
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 1815.5431099544383,
+   "net_median": -489.28381692035373,
+   "net_p05": -4694.210574005862,
+   "net_p95": 16320.5852729569,
+   "p_net_positive": 0.466,
+   "pass_rate_per_attempt": 0.21958579637055103,
+   "evals_bought_mean": 16.829333333333334
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 5594.495137158123,
+   "net_median": 1459.9207020468039,
+   "net_p05": -5513.0,
+   "net_p95": 33114.91366576139,
+   "p_net_positive": 0.5546666666666666,
+   "pass_rate_per_attempt": 0.21939087848178757,
+   "evals_bought_mean": 18.196
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 8044.800583553879,
+   "net_median": 1677.2115434456155,
+   "net_p05": -6854.0,
+   "net_p95": 45948.992628003485,
+   "p_net_positive": 0.5553333333333333,
+   "pass_rate_per_attempt": 0.18641786795724527,
+   "evals_bought_mean": 26.518666666666668
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 4424.788001160721,
+   "net_median": 642.8648909065664,
+   "net_p05": -5662.0,
+   "net_p95": 28438.78072118003,
+   "p_net_positive": 0.5346666666666666,
+   "pass_rate_per_attempt": 0.18673418004811726,
+   "evals_bought_mean": 24.521333333333335
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 8011.523264714089,
+   "net_median": 1673.4230442557891,
+   "net_p05": -6854.0,
+   "net_p95": 45916.32379345523,
+   "p_net_positive": 0.554,
+   "pass_rate_per_attempt": 0.18641697101561894,
+   "evals_bought_mean": 26.497333333333334
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 8523.289643917913,
+   "net_median": -409.7782083496204,
+   "net_p05": -9089.0,
+   "net_p95": 59013.84501542881,
+   "p_net_positive": 0.49,
+   "pass_rate_per_attempt": 0.15295052579053392,
+   "evals_bought_mean": 36.81466666666667
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 5827.551880238334,
+   "net_median": 286.42139082868835,
+   "net_p05": -7897.0,
+   "net_p95": 39673.741557495836,
+   "p_net_positive": 0.514,
+   "pass_rate_per_attempt": 0.1532309847644621,
+   "evals_bought_mean": 34.965333333333334
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 8510.283520415209,
+   "net_median": -383.4629695443973,
+   "net_p05": -9089.0,
+   "net_p95": 59013.84501542881,
+   "p_net_positive": 0.49,
+   "pass_rate_per_attempt": 0.1529235659373152,
+   "evals_bought_mean": 36.815333333333335
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 890.3515187388525,
+   "net_median": -299.9303489684511,
+   "net_p05": -1670.0,
+   "net_p95": 7462.888784648003,
+   "p_net_positive": 0.4666666666666667,
+   "pass_rate_per_attempt": 0.3190795970768319,
+   "evals_bought_mean": 7.36
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 415.69392012622893,
+   "net_median": -226.9095685877843,
+   "net_p05": -1423.0,
+   "net_p95": 4492.246736621574,
+   "p_net_positive": 0.45666666666666667,
+   "pass_rate_per_attempt": 0.3220556196334743,
+   "evals_bought_mean": 5.628666666666667
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 880.9398462333038,
+   "net_median": -368.5641442906598,
+   "net_p05": -1672.0,
+   "net_p95": 7661.3114222107315,
+   "p_net_positive": 0.446,
+   "pass_rate_per_attempt": 0.31943031536113936,
+   "evals_bought_mean": 7.132666666666666
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 1947.948642357262,
+   "net_median": 343.61461118642217,
+   "net_p05": -2264.0,
+   "net_p95": 12334.984476434554,
+   "p_net_positive": 0.5353333333333333,
+   "pass_rate_per_attempt": 0.24735663082437276,
+   "evals_bought_mean": 15.498666666666667
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 1498.869932812602,
+   "net_median": 267.32523796365535,
+   "net_p05": -1766.0,
+   "net_p95": 9322.984688926732,
+   "p_net_positive": 0.5406666666666666,
+   "pass_rate_per_attempt": 0.24629878869448182,
+   "evals_bought_mean": 11.834
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 1879.8531597099175,
+   "net_median": 159.82367667658514,
+   "net_p05": -2264.0,
+   "net_p95": 12156.211138865658,
+   "p_net_positive": 0.5133333333333333,
+   "pass_rate_per_attempt": 0.24704706523714337,
+   "evals_bought_mean": 15.280666666666667
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 2220.6501182434886,
+   "net_median": 479.8828111036894,
+   "net_p05": -2852.1,
+   "net_p95": 14395.264537125347,
+   "p_net_positive": 0.5393333333333333,
+   "pass_rate_per_attempt": 0.2051530927380217,
+   "evals_bought_mean": 23.28933333333333
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 1872.6779602762244,
+   "net_median": 382.98678997788966,
+   "net_p05": -2362.0,
+   "net_p95": 12008.480475993169,
+   "p_net_positive": 0.5353333333333333,
+   "pass_rate_per_attempt": 0.20491367391073137,
+   "evals_bought_mean": 19.318
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 2134.6176054550433,
+   "net_median": 338.0,
+   "net_p05": -2854.0,
+   "net_p95": 14175.451727198611,
+   "p_net_positive": 0.5246666666666666,
+   "pass_rate_per_attempt": 0.20521471484802747,
+   "evals_bought_mean": 23.144666666666666
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 1878.6555113080994,
+   "net_median": -546.0,
+   "net_p05": -3795.0,
+   "net_p95": 15818.499982492478,
+   "p_net_positive": 0.46,
+   "pass_rate_per_attempt": 0.16406514761876284,
+   "evals_bought_mean": 34.071333333333335
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 1466.01557051684,
+   "net_median": -149.0,
+   "net_p05": -3250.0,
+   "net_p95": 13034.03899813226,
+   "p_net_positive": 0.48333333333333334,
+   "pass_rate_per_attempt": 0.1634849315068493,
+   "evals_bought_mean": 30.995333333333335
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 1840.9758577945,
+   "net_median": -598.0,
+   "net_p05": -3795.0,
+   "net_p95": 15712.664412780248,
+   "p_net_positive": 0.45466666666666666,
+   "pass_rate_per_attempt": 0.16420476123848168,
+   "evals_bought_mean": 33.98133333333333
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 1076.368400112645,
+   "net_median": -2384.0,
+   "net_p05": -4470.0,
+   "net_p95": 17235.50902213042,
+   "p_net_positive": 0.414,
+   "pass_rate_per_attempt": 0.2677720938437114,
+   "evals_bought_mean": 8.213333333333333
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 419.7591068179616,
+   "net_median": -1194.814189962739,
+   "net_p05": -4172.0,
+   "net_p95": 9747.810450746225,
+   "p_net_positive": 0.394,
+   "pass_rate_per_attempt": 0.26650863528614965,
+   "evals_bought_mean": 6.39
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 1120.3773121010875,
+   "net_median": -2384.0,
+   "net_p05": -4470.0,
+   "net_p95": 17638.66824517349,
+   "p_net_positive": 0.384,
+   "pass_rate_per_attempt": 0.2671369144510761,
+   "evals_bought_mean": 8.006
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 3271.3004445527026,
+   "net_median": -212.2005805059889,
+   "net_p05": -5513.0,
+   "net_p95": 25342.66790933334,
+   "p_net_positive": 0.494,
+   "pass_rate_per_attempt": 0.22065093503313774,
+   "evals_bought_mean": 16.432
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 2590.430142792174,
+   "net_median": 1.213982699494636,
+   "net_p05": -4768.0,
+   "net_p95": 19668.205998486334,
+   "p_net_positive": 0.5,
+   "pass_rate_per_attempt": 0.22160736450144808,
+   "evals_bought_mean": 13.389333333333333
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 3160.9521839740983,
+   "net_median": -733.1311957128214,
+   "net_p05": -5513.0,
+   "net_p95": 25498.111889643933,
+   "p_net_positive": 0.4746666666666667,
+   "pass_rate_per_attempt": 0.22040275343110008,
+   "evals_bought_mean": 16.221333333333334
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 3358.448950295357,
+   "net_median": -858.0,
+   "net_p05": -7003.0,
+   "net_p95": 29695.151816021073,
+   "p_net_positive": 0.466,
+   "pass_rate_per_attempt": 0.1872664437638729,
+   "evals_bought_mean": 24.371333333333332
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 3029.9680676822477,
+   "net_median": -113.0,
+   "net_p05": -6109.0,
+   "net_p95": 25307.46671270523,
+   "p_net_positive": 0.49466666666666664,
+   "pass_rate_per_attempt": 0.18867924528301888,
+   "evals_bought_mean": 21.044666666666668
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 3261.2024116237894,
+   "net_median": -1099.2039512433798,
+   "net_p05": -7003.0,
+   "net_p95": 29482.489568277782,
+   "p_net_positive": 0.4533333333333333,
+   "pass_rate_per_attempt": 0.18730024041861124,
+   "evals_bought_mean": 24.207333333333334
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 2306.280984620717,
+   "net_median": -2794.865512940884,
+   "net_p05": -9238.0,
+   "net_p95": 30453.97838190151,
+   "p_net_positive": 0.4166666666666667,
+   "pass_rate_per_attempt": 0.15398934085743396,
+   "evals_bought_mean": 34.658
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 1839.4363921498352,
+   "net_median": -1568.7143484690105,
+   "net_p05": -8344.0,
+   "net_p95": 26447.615466094274,
+   "p_net_positive": 0.43066666666666664,
+   "pass_rate_per_attempt": 0.15291895677270123,
+   "evals_bought_mean": 32.02466666666667
+  },
+  {
+   "model": "S1_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 2417.189020690585,
+   "net_median": -2812.936837548521,
+   "net_p05": -9238.0,
+   "net_p95": 31520.899999999987,
+   "p_net_positive": 0.4166666666666667,
+   "pass_rate_per_attempt": 0.1536766730928119,
+   "evals_bought_mean": 34.518
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 4581.471039318131,
+   "net_median": 2853.473326156253,
+   "net_p05": -1632.9256742582384,
+   "net_p95": 16018.78463324264,
+   "p_net_positive": 0.776,
+   "pass_rate_per_attempt": 0.32125027941286044,
+   "evals_bought_mean": 18.648666666666667
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 2439.281045815242,
+   "net_median": 1442.161417581359,
+   "net_p05": -1326.5651495153143,
+   "net_p95": 8880.17940843278,
+   "p_net_positive": 0.724,
+   "pass_rate_per_attempt": 0.32336796261851836,
+   "evals_bought_mean": 15.282666666666668
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 5323.339610074434,
+   "net_median": 3643.682701781373,
+   "net_p05": -1821.0,
+   "net_p95": 17621.051767046927,
+   "p_net_positive": 0.8053333333333333,
+   "pass_rate_per_attempt": 0.3208304120900522,
+   "evals_bought_mean": 17.832
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 9812.67526396984,
+   "net_median": 6558.208048702674,
+   "net_p05": -2840.0752014696045,
+   "net_p95": 35591.28582360321,
+   "p_net_positive": 0.8066666666666666,
+   "pass_rate_per_attempt": 0.24179382282800474,
+   "evals_bought_mean": 35.080666666666666
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 6288.53994417681,
+   "net_median": 3445.8495365415597,
+   "net_p05": -1715.7298974797716,
+   "net_p95": 25342.564976248923,
+   "p_net_positive": 0.8066666666666666,
+   "pass_rate_per_attempt": 0.24143716861674758,
+   "evals_bought_mean": 30.387333333333334
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 9936.397160594983,
+   "net_median": 6637.532238193536,
+   "net_p05": -2838.0968854176563,
+   "net_p95": 35796.449993861694,
+   "p_net_positive": 0.806,
+   "pass_rate_per_attempt": 0.2421492280968831,
+   "evals_bought_mean": 34.849333333333334
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 12863.36149237604,
+   "net_median": 8104.861065828536,
+   "net_p05": -4028.545920226307,
+   "net_p95": 47086.69999999999,
+   "p_net_positive": 0.7793333333333333,
+   "pass_rate_per_attempt": 0.19999440457705597,
+   "evals_bought_mean": 48.269333333333336
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 9254.269384853329,
+   "net_median": 4137.919859061193,
+   "net_p05": -2656.9823306183457,
+   "net_p95": 40265.07476663619,
+   "p_net_positive": 0.792,
+   "pass_rate_per_attempt": 0.2001666792938859,
+   "evals_bought_mean": 44.56933333333333
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 12855.825103466492,
+   "net_median": 8140.363129525427,
+   "net_p05": -4018.803033773232,
+   "net_p95": 47026.549999999996,
+   "p_net_positive": 0.782,
+   "pass_rate_per_attempt": 0.20012323894350614,
+   "evals_bought_mean": 48.215333333333334
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 14064.397748323592,
+   "net_median": 7702.5,
+   "net_p05": -5858.05,
+   "net_p95": 55253.14999999996,
+   "p_net_positive": 0.694,
+   "pass_rate_per_attempt": 0.16274573330685702,
+   "evals_bought_mean": 64.334
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 10738.429883647483,
+   "net_median": 3598.1189481272177,
+   "net_p05": -4595.62064438189,
+   "net_p95": 54720.99999999999,
+   "p_net_positive": 0.6753333333333333,
+   "pass_rate_per_attempt": 0.16256661692602856,
+   "evals_bought_mean": 63.11266666666667
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 14087.585836515882,
+   "net_median": 7761.939615051634,
+   "net_p05": -5857.0,
+   "net_p95": 55253.14999999996,
+   "p_net_positive": 0.694,
+   "pass_rate_per_attempt": 0.16278169934640524,
+   "evals_bought_mean": 64.29466666666667
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 450,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 5513.1537532627735,
+   "net_median": 3078.4512473346626,
+   "net_p05": -3353.147326944894,
+   "net_p95": 22189.6550478455,
+   "p_net_positive": 0.6713333333333333,
+   "pass_rate_per_attempt": 0.2812115064125788,
+   "evals_bought_mean": 19.2
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 450,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 2355.0137947339826,
+   "net_median": 811.8877283988406,
+   "net_p05": -2735.774709470005,
+   "net_p95": 11594.258565142312,
+   "p_net_positive": 0.5926666666666667,
+   "pass_rate_per_attempt": 0.2809607942116776,
+   "evals_bought_mean": 16.526666666666667
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 450,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 6594.093203300233,
+   "net_median": 4111.223383955726,
+   "net_p05": -3665.0,
+   "net_p95": 24958.14675443899,
+   "p_net_positive": 0.73,
+   "pass_rate_per_attempt": 0.2804033714629741,
+   "evals_bought_mean": 18.482666666666667
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 750,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 12887.925101843097,
+   "net_median": 7757.755084525027,
+   "net_p05": -5117.68648256889,
+   "net_p95": 51071.734106073956,
+   "p_net_positive": 0.738,
+   "pass_rate_per_attempt": 0.2194721341187132,
+   "evals_bought_mean": 36.036
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 750,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 8158.3161600657195,
+   "net_median": 3884.0785777604033,
+   "net_p05": -3476.493832423928,
+   "net_p95": 35854.38258311197,
+   "p_net_positive": 0.7233333333333334,
+   "pass_rate_per_attempt": 0.2194656888423258,
+   "evals_bought_mean": 32.465333333333334
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 750,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 13107.797007509584,
+   "net_median": 7855.427029337492,
+   "net_p05": -5352.45,
+   "net_p95": 52111.57335629859,
+   "p_net_positive": 0.742,
+   "pass_rate_per_attempt": 0.21920695810703028,
+   "evals_bought_mean": 35.824666666666666
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 1050,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 17305.128698060762,
+   "net_median": 9983.5,
+   "net_p05": -7474.7246471030785,
+   "net_p95": 69478.27680865156,
+   "p_net_positive": 0.7166666666666667,
+   "pass_rate_per_attempt": 0.18425633772168426,
+   "evals_bought_mean": 49.66466666666667
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 1050,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 12531.124949439203,
+   "net_median": 5111.74184996418,
+   "net_p05": -5352.448510490461,
+   "net_p95": 62265.04854465604,
+   "p_net_positive": 0.7106666666666667,
+   "pass_rate_per_attempt": 0.18548656620991297,
+   "evals_bought_mean": 46.49
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 1050,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 17359.943855152334,
+   "net_median": 10062.814507491055,
+   "net_p05": -7479.766978383442,
+   "net_p95": 69706.60567871665,
+   "p_net_positive": 0.7193333333333334,
+   "pass_rate_per_attempt": 0.18433569102034697,
+   "evals_bought_mean": 49.562
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 1500,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 19404.366138068744,
+   "net_median": 9612.5,
+   "net_p05": -10697.0,
+   "net_p95": 82072.4,
+   "p_net_positive": 0.6553333333333333,
+   "pass_rate_per_attempt": 0.15305174016317258,
+   "evals_bought_mean": 65.13466666666666
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 1500,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 14616.2148420931,
+   "net_median": 4275.576324676719,
+   "net_p05": -8343.05275716543,
+   "net_p95": 81577.9137570259,
+   "p_net_positive": 0.6113333333333333,
+   "pass_rate_per_attempt": 0.1533454911331908,
+   "evals_bought_mean": 64.19333333333333
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_100k",
+   "risk": 1500,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 19431.558855568448,
+   "net_median": 9377.199860915864,
+   "net_p05": -10697.0,
+   "net_p95": 82072.4,
+   "p_net_positive": 0.6553333333333333,
+   "pass_rate_per_attempt": 0.15307598520386023,
+   "evals_bought_mean": 65.10333333333334
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 8988.852861784935,
+   "net_median": 4877.000706529144,
+   "net_p05": -4743.719287109955,
+   "net_p95": 35352.922088573636,
+   "p_net_positive": 0.682,
+   "pass_rate_per_attempt": 0.27698207982622863,
+   "evals_bought_mean": 20.446
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 3838.411647714444,
+   "net_median": 1490.357999561113,
+   "net_p05": -4044.693886924856,
+   "net_p95": 18009.97498559785,
+   "p_net_positive": 0.6166666666666667,
+   "pass_rate_per_attempt": 0.27418984141576647,
+   "evals_bought_mean": 18.122
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 10702.864781389664,
+   "net_median": 6760.590388586578,
+   "net_p05": -5364.0,
+   "net_p95": 38787.3198375083,
+   "p_net_positive": 0.7306666666666667,
+   "pass_rate_per_attempt": 0.2757915520767224,
+   "evals_bought_mean": 19.679333333333332
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 19828.526665605623,
+   "net_median": 12070.58584806561,
+   "net_p05": -6728.2128167579585,
+   "net_p95": 73071.77252394377,
+   "p_net_positive": 0.7733333333333333,
+   "pass_rate_per_attempt": 0.21777169706025312,
+   "evals_bought_mean": 37.774
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 13052.72851066524,
+   "net_median": 6265.522889251922,
+   "net_p05": -5157.659060740457,
+   "net_p95": 55427.5492719739,
+   "p_net_positive": 0.748,
+   "pass_rate_per_attempt": 0.21833606786986273,
+   "evals_bought_mean": 33.97533333333333
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 20001.34398250557,
+   "net_median": 12103.717819413783,
+   "net_p05": -7054.888620895783,
+   "net_p95": 73556.52022136809,
+   "p_net_positive": 0.7686666666666667,
+   "pass_rate_per_attempt": 0.21784430921468426,
+   "evals_bought_mean": 37.66
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 27692.77184018441,
+   "net_median": 16586.760849544095,
+   "net_p05": -10430.0,
+   "net_p95": 105784.82730253135,
+   "p_net_positive": 0.748,
+   "pass_rate_per_attempt": 0.18357728260584955,
+   "evals_bought_mean": 51.58866666666667
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 20963.807441793502,
+   "net_median": 8834.930091269625,
+   "net_p05": -7477.571899189811,
+   "net_p95": 97542.08455888298,
+   "p_net_positive": 0.7253333333333334,
+   "pass_rate_per_attempt": 0.18416387630490447,
+   "evals_bought_mean": 48.012
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 27634.49410085417,
+   "net_median": 16570.0,
+   "net_p05": -10580.73909313983,
+   "net_p95": 104996.5666073749,
+   "p_net_positive": 0.7493333333333333,
+   "pass_rate_per_attempt": 0.18364112639161756,
+   "evals_bought_mean": 51.56666666666667
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 31253.434249289683,
+   "net_median": 14856.5,
+   "net_p05": -15645.0,
+   "net_p95": 136229.44999999998,
+   "p_net_positive": 0.6733333333333333,
+   "pass_rate_per_attempt": 0.15235197286377014,
+   "evals_bought_mean": 67.43466666666667
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 24389.885494643866,
+   "net_median": 6582.675058903622,
+   "net_p05": -12015.717194591594,
+   "net_p95": 132324.7471408477,
+   "p_net_positive": 0.6373333333333333,
+   "pass_rate_per_attempt": 0.15222460877569807,
+   "evals_bought_mean": 65.77866666666667
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 31256.770391894523,
+   "net_median": 15080.0,
+   "net_p05": -15652.449999999999,
+   "net_p95": 136229.44999999998,
+   "p_net_positive": 0.672,
+   "pass_rate_per_attempt": 0.15233895667268574,
+   "evals_bought_mean": 67.436
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 4701.688981396441,
+   "net_median": 3038.491237894985,
+   "net_p05": -2264.1,
+   "net_p95": 16966.989581467144,
+   "p_net_positive": 0.7506666666666667,
+   "pass_rate_per_attempt": 0.32192727446027736,
+   "evals_bought_mean": 14.498
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 3640.868595045392,
+   "net_median": 2089.4891404859945,
+   "net_p05": -1574.0,
+   "net_p95": 14776.299206786834,
+   "p_net_positive": 0.7433333333333333,
+   "pass_rate_per_attempt": 0.32049379384781435,
+   "evals_bought_mean": 10.206
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 4758.274283625692,
+   "net_median": 3054.7044236957845,
+   "net_p05": -2266.0,
+   "net_p95": 17662.94877825763,
+   "p_net_positive": 0.742,
+   "pass_rate_per_attempt": 0.32202317203777625,
+   "evals_bought_mean": 14.182666666666666
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 6355.130675048087,
+   "net_median": 4789.430041097161,
+   "net_p05": -3640.0,
+   "net_p95": 21250.34617196576,
+   "p_net_positive": 0.7406666666666667,
+   "pass_rate_per_attempt": 0.24256538874955214,
+   "evals_bought_mean": 28.357333333333333
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 5149.771824041228,
+   "net_median": 3230.0,
+   "net_p05": -2703.2,
+   "net_p95": 20263.743158483147,
+   "p_net_positive": 0.7446666666666667,
+   "pass_rate_per_attempt": 0.24100902846516092,
+   "evals_bought_mean": 22.598
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 6329.824865563271,
+   "net_median": 4687.950640376017,
+   "net_p05": -3640.1,
+   "net_p95": 21308.899999999994,
+   "p_net_positive": 0.738,
+   "pass_rate_per_attempt": 0.2426521833169114,
+   "evals_bought_mean": 28.184666666666665
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 6073.334828338364,
+   "net_median": 4382.2555384115485,
+   "net_p05": -4873.1,
+   "net_p95": 22920.1,
+   "p_net_positive": 0.7026666666666667,
+   "pass_rate_per_attempt": 0.20165246158108308,
+   "evals_bought_mean": 41.34
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 4890.050772362423,
+   "net_median": 2951.027851466148,
+   "net_p05": -4040.0,
+   "net_p95": 20872.02018736619,
+   "p_net_positive": 0.6826666666666666,
+   "pass_rate_per_attempt": 0.2010042963580661,
+   "evals_bought_mean": 37.196666666666665
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 6035.473818526745,
+   "net_median": 4279.906079742458,
+   "net_p05": -4873.1,
+   "net_p95": 22920.1,
+   "p_net_positive": 0.6973333333333334,
+   "pass_rate_per_attempt": 0.20169726642186864,
+   "evals_bought_mean": 41.281333333333336
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 4703.977917447405,
+   "net_median": 2717.3185750274106,
+   "net_p05": -6692.1,
+   "net_p95": 23521.549999999992,
+   "p_net_positive": 0.62,
+   "pass_rate_per_attempt": 0.16217683381963766,
+   "evals_bought_mean": 59.402
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 3525.3300796059834,
+   "net_median": 1659.0,
+   "net_p05": -5812.25,
+   "net_p95": 18816.395992228292,
+   "p_net_positive": 0.6013333333333334,
+   "pass_rate_per_attempt": 0.1627458453152248,
+   "evals_bought_mean": 58.216
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_50k_consistency",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 4684.240977775508,
+   "net_median": 2711.098594157058,
+   "net_p05": -6692.1,
+   "net_p95": 23412.1,
+   "p_net_positive": 0.618,
+   "pass_rate_per_attempt": 0.16219459728732197,
+   "evals_bought_mean": 59.336666666666666
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 8869.831699380806,
+   "net_median": 5375.420323979341,
+   "net_p05": -5513.0,
+   "net_p95": 36295.19477052766,
+   "p_net_positive": 0.676,
+   "pass_rate_per_attempt": 0.27595077820177505,
+   "evals_bought_mean": 16.083333333333332
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 7244.163350952986,
+   "net_median": 3928.0594319111046,
+   "net_p05": -4172.0,
+   "net_p95": 30257.377151089928,
+   "p_net_positive": 0.7193333333333334,
+   "pass_rate_per_attempt": 0.27499851287847243,
+   "evals_bought_mean": 11.586
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 8853.426335653132,
+   "net_median": 5075.7080431861195,
+   "net_p05": -5513.0,
+   "net_p95": 36462.42984513056,
+   "p_net_positive": 0.666,
+   "pass_rate_per_attempt": 0.27616557734204794,
+   "evals_bought_mean": 15.816
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 11199.403698889375,
+   "net_median": 7671.0,
+   "net_p05": -8493.0,
+   "net_p95": 43544.91067049416,
+   "p_net_positive": 0.6793333333333333,
+   "pass_rate_per_attempt": 0.21949357995869623,
+   "evals_bought_mean": 30.171333333333333
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 9580.692781338154,
+   "net_median": 5577.134312347214,
+   "net_p05": -7003.0,
+   "net_p95": 40518.97392988022,
+   "p_net_positive": 0.696,
+   "pass_rate_per_attempt": 0.2180410995463037,
+   "evals_bought_mean": 25.397333333333332
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 11210.35199904758,
+   "net_median": 7649.846614501449,
+   "net_p05": -8493.0,
+   "net_p95": 44418.645766930356,
+   "p_net_positive": 0.6733333333333333,
+   "pass_rate_per_attempt": 0.2195861133099627,
+   "evals_bought_mean": 29.941333333333333
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 10082.793129688282,
+   "net_median": 6202.740270890186,
+   "net_p05": -12069.0,
+   "net_p95": 44031.15276693884,
+   "p_net_positive": 0.6406666666666667,
+   "pass_rate_per_attempt": 0.1853427603385058,
+   "evals_bought_mean": 43.538
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 8161.2955793223255,
+   "net_median": 4115.615863140119,
+   "net_p05": -9983.0,
+   "net_p95": 39773.45478159674,
+   "p_net_positive": 0.6266666666666667,
+   "pass_rate_per_attempt": 0.1849054691063916,
+   "evals_bought_mean": 39.92133333333334
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 10066.246370664834,
+   "net_median": 6181.0,
+   "net_p05": -12069.0,
+   "net_p95": 44041.19971285626,
+   "p_net_positive": 0.6393333333333333,
+   "pass_rate_per_attempt": 0.18529274732101259,
+   "evals_bought_mean": 43.37133333333333
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 6496.151131588904,
+   "net_median": 2683.5639457449997,
+   "net_p05": -16241.0,
+   "net_p95": 42355.09999999999,
+   "p_net_positive": 0.5493333333333333,
+   "pass_rate_per_attempt": 0.1526188575483413,
+   "evals_bought_mean": 60.583333333333336
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 4937.251907777273,
+   "net_median": 817.0,
+   "net_p05": -14453.0,
+   "net_p95": 36473.81781059292,
+   "p_net_positive": 0.5233333333333333,
+   "pass_rate_per_attempt": 0.15187491599838718,
+   "evals_bought_mean": 60.022
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k_consistency",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 6448.493999425627,
+   "net_median": 2708.915251679514,
+   "net_p05": -16241.0,
+   "net_p95": 42166.24999999999,
+   "p_net_positive": 0.5473333333333333,
+   "pass_rate_per_attempt": 0.15257626591419113,
+   "evals_bought_mean": 60.464666666666666
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 13997.931247861263,
+   "net_median": 11764.33362907748,
+   "net_p05": 939.5155545575304,
+   "net_p95": 35748.52514454713,
+   "p_net_positive": 0.9753333333333334,
+   "pass_rate_per_attempt": 0.4870499678106274,
+   "evals_bought_mean": 14.022666666666666
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 9246.53430831613,
+   "net_median": 6936.625100369676,
+   "net_p05": 228.66429901155144,
+   "net_p95": 26073.028194954433,
+   "p_net_positive": 0.9606666666666667,
+   "pass_rate_per_attempt": 0.4883318374150532,
+   "evals_bought_mean": 10.804
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 15632.342432712354,
+   "net_median": 14037.403262076652,
+   "net_p05": 1819.7870259384003,
+   "net_p95": 37178.01900148705,
+   "p_net_positive": 0.98,
+   "pass_rate_per_attempt": 0.48645293609671847,
+   "evals_bought_mean": 12.866666666666667
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 27654.25310660129,
+   "net_median": 24845.146960094622,
+   "net_p05": 1437.6624223022923,
+   "net_p95": 61853.03098841765,
+   "p_net_positive": 0.9733333333333334,
+   "pass_rate_per_attempt": 0.3468544544303034,
+   "evals_bought_mean": 22.474666666666668
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 20455.774064852958,
+   "net_median": 13685.485166685183,
+   "net_p05": 1793.9748559288994,
+   "net_p95": 61331.78101009798,
+   "p_net_positive": 0.9826666666666667,
+   "pass_rate_per_attempt": 0.3500461712096857,
+   "evals_bought_mean": 19.815333333333335
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 27942.47001201882,
+   "net_median": 25286.15592228675,
+   "net_p05": 1465.1821049860487,
+   "net_p95": 62058.28429205486,
+   "p_net_positive": 0.972,
+   "pass_rate_per_attempt": 0.34691512397450364,
+   "evals_bought_mean": 22.219333333333335
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 34778.58019051644,
+   "net_median": 34979.891512402115,
+   "net_p05": 950.0887428804567,
+   "net_p95": 67906.0,
+   "p_net_positive": 0.9586666666666667,
+   "pass_rate_per_attempt": 0.2784423146912532,
+   "evals_bought_mean": 27.701333333333334
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 28417.914592738925,
+   "net_median": 22864.626823781997,
+   "net_p05": 2001.6196474606668,
+   "net_p95": 67290.05567563814,
+   "p_net_positive": 0.9793333333333333,
+   "pass_rate_per_attempt": 0.2799592425070829,
+   "evals_bought_mean": 27.08
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 34896.91339183503,
+   "net_median": 35013.5,
+   "net_p05": 856.5415151212549,
+   "net_p95": 67906.0,
+   "p_net_positive": 0.96,
+   "pass_rate_per_attempt": 0.2783721213598148,
+   "evals_bought_mean": 27.579333333333334
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 36827.82463447228,
+   "net_median": 38492.91989672254,
+   "net_p05": -1153.8499999999995,
+   "net_p95": 69510.55,
+   "p_net_positive": 0.9366666666666666,
+   "pass_rate_per_attempt": 0.21937779399689808,
+   "evals_bought_mean": 36.714666666666666
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 31867.088381204663,
+   "net_median": 29439.0683859561,
+   "net_p05": -341.5259221364637,
+   "net_p95": 69706.1,
+   "p_net_positive": 0.9426666666666667,
+   "pass_rate_per_attempt": 0.2201019613396587,
+   "evals_bought_mean": 37.878
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 36848.68495202337,
+   "net_median": 38492.91989672254,
+   "net_p05": -1153.8499999999995,
+   "net_p95": 69510.55,
+   "p_net_positive": 0.9366666666666666,
+   "pass_rate_per_attempt": 0.21916707746800315,
+   "evals_bought_mean": 36.692
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 450,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 19451.715541608362,
+   "net_median": 15666.78852304651,
+   "net_p05": -85.53613943032397,
+   "net_p95": 52112.5586361099,
+   "p_net_positive": 0.9486666666666667,
+   "pass_rate_per_attempt": 0.44849589790337285,
+   "evals_bought_mean": 14.535333333333334
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 450,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 10871.076115427904,
+   "net_median": 8103.908447113673,
+   "net_p05": -707.7035920746235,
+   "net_p95": 30346.415707271834,
+   "p_net_positive": 0.9273333333333333,
+   "pass_rate_per_attempt": 0.44540807535466087,
+   "evals_bought_mean": 12.136
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 450,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 21927.75664721251,
+   "net_median": 18562.62001464269,
+   "net_p05": 1108.7201454539097,
+   "net_p95": 55069.56346094014,
+   "p_net_positive": 0.966,
+   "pass_rate_per_attempt": 0.44808912269843726,
+   "evals_bought_mean": 13.516
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 750,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 39787.44114499759,
+   "net_median": 34594.244145068464,
+   "net_p05": 268.65040924805237,
+   "net_p95": 94460.14078676223,
+   "p_net_positive": 0.9553333333333334,
+   "pass_rate_per_attempt": 0.32491684743311644,
+   "evals_bought_mean": 23.446666666666665
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 750,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 30010.860775822868,
+   "net_median": 19391.75700290895,
+   "net_p05": 1169.5384145758596,
+   "net_p95": 94122.55910585518,
+   "p_net_positive": 0.9693333333333334,
+   "pass_rate_per_attempt": 0.325252017711899,
+   "evals_bought_mean": 21.594666666666665
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 750,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 40310.55238073902,
+   "net_median": 35060.93007711992,
+   "net_p05": 916.1993465093035,
+   "net_p95": 95078.06260904114,
+   "p_net_positive": 0.96,
+   "pass_rate_per_attempt": 0.3251882452902054,
+   "evals_bought_mean": 23.138
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 1050,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 50162.07955519003,
+   "net_median": 48757.268641366056,
+   "net_p05": -1028.7518326107677,
+   "net_p95": 104507.0,
+   "p_net_positive": 0.9453333333333334,
+   "pass_rate_per_attempt": 0.261195058099481,
+   "evals_bought_mean": 29.280666666666665
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 1050,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 41942.379114698124,
+   "net_median": 32570.997295295707,
+   "net_p05": 1475.332399559062,
+   "net_p95": 102163.9,
+   "p_net_positive": 0.9693333333333334,
+   "pass_rate_per_attempt": 0.2637945318972659,
+   "evals_bought_mean": 28.438
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 1050,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 50135.264302669806,
+   "net_median": 48896.5,
+   "net_p05": -1045.9499999999998,
+   "net_p95": 104459.5,
+   "p_net_positive": 0.9446666666666667,
+   "pass_rate_per_attempt": 0.26134639260587667,
+   "evals_bought_mean": 29.246
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 1500,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 53396.25074416119,
+   "net_median": 55149.874972609425,
+   "net_p05": -4354.296096562679,
+   "net_p95": 104507.0,
+   "p_net_positive": 0.9093333333333333,
+   "pass_rate_per_attempt": 0.2109060196019778,
+   "evals_bought_mean": 38.07933333333333
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 1500,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 46690.31041907976,
+   "net_median": 43377.88397135777,
+   "net_p05": -1757.2298095188928,
+   "net_p95": 104460.45,
+   "p_net_positive": 0.9206666666666666,
+   "pass_rate_per_attempt": 0.21181586030781974,
+   "evals_bought_mean": 38.87
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_100k",
+   "risk": 1500,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 53409.14772137127,
+   "net_median": 55176.5,
+   "net_p05": -4310.478741924351,
+   "net_p95": 104507.0,
+   "p_net_positive": 0.91,
+   "pass_rate_per_attempt": 0.21091069071711394,
+   "evals_bought_mean": 38.07533333333333
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 30500.862636072816,
+   "net_median": 25213.19138053496,
+   "net_p05": 637.7766051523622,
+   "net_p95": 78705.40482468571,
+   "p_net_positive": 0.9573333333333334,
+   "pass_rate_per_attempt": 0.4357196484564766,
+   "evals_bought_mean": 15.732
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 16929.1700831787,
+   "net_median": 12848.259269392993,
+   "net_p05": -799.7669781839696,
+   "net_p95": 48495.70859547554,
+   "p_net_positive": 0.9273333333333333,
+   "pass_rate_per_attempt": 0.43437674395007864,
+   "evals_bought_mean": 13.697333333333333
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 34175.07264664787,
+   "net_median": 29253.355320342987,
+   "net_p05": 1823.4151139587036,
+   "net_p95": 82163.92783233263,
+   "p_net_positive": 0.976,
+   "pass_rate_per_attempt": 0.43651952701747776,
+   "evals_bought_mean": 14.746
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 61500.03424634184,
+   "net_median": 53146.08934787428,
+   "net_p05": 774.1250790247212,
+   "net_p95": 154138.1974840557,
+   "p_net_positive": 0.9593333333333334,
+   "pass_rate_per_attempt": 0.3210880017000027,
+   "evals_bought_mean": 25.549333333333333
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 48211.632594242314,
+   "net_median": 30938.724683881162,
+   "net_p05": 2223.5652118376615,
+   "net_p95": 156378.09908014644,
+   "p_net_positive": 0.972,
+   "pass_rate_per_attempt": 0.3196235210810492,
+   "evals_bought_mean": 23.003333333333334
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 62162.53705554243,
+   "net_median": 53961.53452245462,
+   "net_p05": 940.1378327309808,
+   "net_p95": 154894.10198620794,
+   "p_net_positive": 0.9593333333333334,
+   "pass_rate_per_attempt": 0.32123363179263803,
+   "evals_bought_mean": 25.241333333333333
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 80832.65413611812,
+   "net_median": 74304.74637655582,
+   "net_p05": -1733.899591552915,
+   "net_p95": 173774.02705222013,
+   "p_net_positive": 0.942,
+   "pass_rate_per_attempt": 0.2599190980290903,
+   "evals_bought_mean": 31.276666666666667
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 68195.96116938557,
+   "net_median": 50515.58555360127,
+   "net_p05": 2787.55846053395,
+   "net_p95": 170821.4110330847,
+   "p_net_positive": 0.9666666666666667,
+   "pass_rate_per_attempt": 0.26184409317428464,
+   "evals_bought_mean": 29.874
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 80914.69142240298,
+   "net_median": 74405.97184882927,
+   "net_p05": -1510.94224030016,
+   "net_p95": 173774.02705222013,
+   "p_net_positive": 0.942,
+   "pass_rate_per_attempt": 0.2599448347196483,
+   "evals_bought_mean": 31.230666666666668
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 86875.1425493279,
+   "net_median": 86752.0,
+   "net_p05": -6267.199687838302,
+   "net_p95": 174755.0,
+   "p_net_positive": 0.914,
+   "pass_rate_per_attempt": 0.20869305352636472,
+   "evals_bought_mean": 40.39
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 76342.59757220281,
+   "net_median": 67667.06556579442,
+   "net_p05": -1284.3050217998841,
+   "net_p95": 174755.0,
+   "p_net_positive": 0.9393333333333334,
+   "pass_rate_per_attempt": 0.20944011059543793,
+   "evals_bought_mean": 40.757333333333335
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 86969.92268515704,
+   "net_median": 86757.58575793973,
+   "net_p05": -6347.0,
+   "net_p95": 174755.0,
+   "p_net_positive": 0.9153333333333333,
+   "pass_rate_per_attempt": 0.2087758663674894,
+   "evals_bought_mean": 40.34466666666667
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 15530.192111234015,
+   "net_median": 14723.789162921175,
+   "net_p05": 911.4143885468256,
+   "net_p95": 33103.797594606236,
+   "p_net_positive": 0.9666666666666667,
+   "pass_rate_per_attempt": 0.4874585494430746,
+   "evals_bought_mean": 8.016666666666667
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 13637.51650973032,
+   "net_median": 11511.346233110497,
+   "net_p05": 824.099660748151,
+   "net_p95": 33930.56121677381,
+   "p_net_positive": 0.976,
+   "pass_rate_per_attempt": 0.4899003501211958,
+   "evals_bought_mean": 5.030666666666667
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 300,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 15741.327493116383,
+   "net_median": 15073.650384607916,
+   "net_p05": 951.9154748083578,
+   "net_p95": 32903.89170929269,
+   "p_net_positive": 0.9653333333333334,
+   "pass_rate_per_attempt": 0.48410366016564255,
+   "evals_bought_mean": 7.638
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 18931.695827703617,
+   "net_median": 18406.0,
+   "net_p05": -83.19428627711537,
+   "net_p95": 39780.492985124176,
+   "p_net_positive": 0.9486666666666667,
+   "pass_rate_per_attempt": 0.3473490974255868,
+   "evals_bought_mean": 15.378
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 17058.21604381758,
+   "net_median": 15460.0,
+   "net_p05": 1313.1282272026501,
+   "net_p95": 38075.30936803866,
+   "p_net_positive": 0.9753333333333334,
+   "pass_rate_per_attempt": 0.3517873510540788,
+   "evals_bought_mean": 11.003333333333334
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 500,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 19012.328992462004,
+   "net_median": 18478.808896358612,
+   "net_p05": -141.4194889754136,
+   "net_p95": 39964.44999999999,
+   "p_net_positive": 0.948,
+   "pass_rate_per_attempt": 0.34744094488188976,
+   "evals_bought_mean": 15.020666666666667
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 18675.553768591395,
+   "net_median": 18011.0,
+   "net_p05": -1292.0504705645587,
+   "net_p95": 39908.1,
+   "p_net_positive": 0.936,
+   "pass_rate_per_attempt": 0.2773811951866204,
+   "evals_bought_mean": 22.986666666666668
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 16856.943986326514,
+   "net_median": 15332.938758673741,
+   "net_p05": 101.7170348753807,
+   "net_p95": 38859.64990971102,
+   "p_net_positive": 0.952,
+   "pass_rate_per_attempt": 0.28118743527787365,
+   "evals_bought_mean": 19.426
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 700,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 18645.911095725256,
+   "net_median": 18003.488914053167,
+   "net_p05": -1302.3406249096186,
+   "net_p95": 39912.35,
+   "p_net_positive": 0.9353333333333333,
+   "pass_rate_per_attempt": 0.2776101034371612,
+   "evals_bought_mean": 22.856666666666666
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 16552.135917904056,
+   "net_median": 15825.0,
+   "net_p05": -3016.45,
+   "net_p95": 39023.871466116005,
+   "p_net_positive": 0.888,
+   "pass_rate_per_attempt": 0.21910166209765541,
+   "evals_bought_mean": 34.904666666666664
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 15506.238855340462,
+   "net_median": 14466.5,
+   "net_p05": -2077.1,
+   "net_p95": 37112.45,
+   "p_net_positive": 0.9093333333333333,
+   "pass_rate_per_attempt": 0.22021225778313153,
+   "evals_bought_mean": 32.23733333333333
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_50k_consistency",
+   "risk": 1000,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 16536.24883276412,
+   "net_median": 15781.5,
+   "net_p05": -3016.45,
+   "net_p95": 39023.871466116005,
+   "p_net_positive": 0.888,
+   "pass_rate_per_attempt": 0.21897585729663233,
+   "evals_bought_mean": 34.81066666666667
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk funded",
+   "net_mean": 32494.43673957092,
+   "net_median": 30967.507944160323,
+   "net_p05": 61.56032649258768,
+   "net_p95": 73056.75023101954,
+   "p_net_positive": 0.95,
+   "pass_rate_per_attempt": 0.43161866625596795,
+   "evals_bought_mean": 8.834666666666667
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 28948.18648761568,
+   "net_median": 25512.892544361264,
+   "net_p05": 1834.9285820312534,
+   "net_p95": 69160.64057763988,
+   "p_net_positive": 0.974,
+   "pass_rate_per_attempt": 0.43975018368846436,
+   "evals_bought_mean": 5.528
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 675,
+   "risk_frac": 0.15,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 32847.481934099735,
+   "net_median": 32023.90301718042,
+   "net_p05": -155.24414398728143,
+   "net_p95": 72840.15430079045,
+   "p_net_positive": 0.948,
+   "pass_rate_per_attempt": 0.43291261355414423,
+   "evals_bought_mean": 8.456
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk funded",
+   "net_mean": 36639.23615103576,
+   "net_median": 36012.0,
+   "net_p05": -1435.8272404913362,
+   "net_p95": 80553.0,
+   "p_net_positive": 0.9393333333333334,
+   "pass_rate_per_attempt": 0.32230772329881957,
+   "evals_bought_mean": 16.688666666666666
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 34282.31037815412,
+   "net_median": 31330.88478154003,
+   "net_p05": 1860.254673744466,
+   "net_p95": 75302.0,
+   "p_net_positive": 0.9673333333333334,
+   "pass_rate_per_attempt": 0.3225496988754464,
+   "evals_bought_mean": 12.61
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 1125,
+   "risk_frac": 0.25,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 36624.58544987463,
+   "net_median": 36041.632241510364,
+   "net_p05": -1519.9276098014118,
+   "net_p95": 80553.0,
+   "p_net_positive": 0.9406666666666667,
+   "pass_rate_per_attempt": 0.32257403842215215,
+   "evals_bought_mean": 16.411333333333335
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk funded",
+   "net_mean": 35006.00669490102,
+   "net_median": 33926.0,
+   "net_p05": -4685.059511410519,
+   "net_p95": 79520.11641951496,
+   "p_net_positive": 0.91,
+   "pass_rate_per_attempt": 0.26122843340234647,
+   "evals_bought_mean": 24.282
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 32779.98251494646,
+   "net_median": 30910.0,
+   "net_p05": -1163.4499999999996,
+   "net_p95": 75004.0,
+   "p_net_positive": 0.9373333333333334,
+   "pass_rate_per_attempt": 0.26260825267447785,
+   "evals_bought_mean": 21.07
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 1575,
+   "risk_frac": 0.35,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 35030.096297966855,
+   "net_median": 33851.5,
+   "net_p05": -4969.916250917924,
+   "net_p95": 79226.89999999998,
+   "p_net_positive": 0.91,
+   "pass_rate_per_attempt": 0.26111605157847934,
+   "evals_bought_mean": 24.118
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk funded",
+   "net_mean": 30903.988836732115,
+   "net_median": 30016.0,
+   "net_p05": -9549.099999999999,
+   "net_p95": 75956.34999999998,
+   "p_net_positive": 0.8653333333333333,
+   "pass_rate_per_attempt": 0.20921276476416595,
+   "evals_bought_mean": 35.798
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "half risk funded + scale-up 25 %",
+   "net_mean": 28566.09340432653,
+   "net_median": 26554.974989645205,
+   "net_p05": -5775.0,
+   "net_p95": 71614.47501382178,
+   "p_net_positive": 0.88,
+   "pass_rate_per_attempt": 0.20923801117975876,
+   "evals_bought_mean": 34.14666666666667
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k_consistency",
+   "risk": 2250,
+   "risk_frac": 0.5,
+   "policy": "same risk, cushion before payouts",
+   "net_mean": 30924.40550338273,
+   "net_median": 30034.0,
+   "net_p05": -9656.449999999999,
+   "net_p95": 76381.86996635597,
+   "p_net_positive": 0.8653333333333333,
+   "pass_rate_per_attempt": 0.2090447363982233,
+   "evals_bought_mean": 35.70733333333333
+  }
+ ],
+ "fleet": [
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "slots": 1,
+   "rho": 1.0,
+   "by_year": {
+    "1": {
+     "mean": 9486.54432033455,
+     "median": 1290.5741451280464,
+     "p05": -9089.0,
+     "p95": 59289.89999999999,
+     "p_positive": 0.54
+    },
+    "2": {
+     "mean": 30628.4473664662,
+     "median": 14796.567030459362,
+     "p05": -15071.349999999999,
+     "p95": 126968.69999999995,
+     "p_positive": 0.67
+    },
+    "3": {
+     "mean": 57563.17144090682,
+     "median": 34853.29888994843,
+     "p05": -17866.399999999998,
+     "p95": 202650.6999999999,
+     "p_positive": 0.764
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 0.738,
+     "median_months": 12.142857142857142
+    },
+    "50000": {
+     "p_reach": 0.43,
+     "median_months": 19.714285714285715
+    },
+    "100000": {
+     "p_reach": 0.262,
+     "median_months": 24.714285714285715
+    },
+    "250000": {
+     "p_reach": 0.002,
+     "median_months": 35.904761904761905
+    },
+    "1000000": {
+     "p_reach": 0.0,
+     "median_months": null
+    }
+   }
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "slots": 3,
+   "rho": 1.0,
+   "by_year": {
+    "1": {
+     "mean": 24539.376923909236,
+     "median": -5497.5,
+     "p05": -27267.0,
+     "p95": 181915.04999999993,
+     "p_positive": 0.47
+    },
+    "2": {
+     "mean": 87428.98158942188,
+     "median": 33648.93335033607,
+     "p05": -46510.35,
+     "p95": 384821.84999999957,
+     "p_positive": 0.646
+    },
+    "3": {
+     "mean": 167402.61452308562,
+     "median": 99107.25304760985,
+     "p05": -55829.7,
+     "p95": 621559.35,
+     "p_positive": 0.756
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 0.82,
+     "median_months": 9.857142857142858
+    },
+    "50000": {
+     "p_reach": 0.66,
+     "median_months": 15.642857142857142
+    },
+    "100000": {
+     "p_reach": 0.53,
+     "median_months": 18.857142857142858
+    },
+    "250000": {
+     "p_reach": 0.296,
+     "median_months": 24.142857142857142
+    },
+    "1000000": {
+     "p_reach": 0.0,
+     "median_months": null
+    }
+   }
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "slots": 5,
+   "rho": 1.0,
+   "by_year": {
+    "1": {
+     "mean": 53663.840201034545,
+     "median": 4025.0,
+     "p05": -45445.0,
+     "p95": 325580.0,
+     "p_positive": 0.514
+    },
+    "2": {
+     "mean": 169042.74938076496,
+     "median": 79344.00181597238,
+     "p05": -77496.26526137942,
+     "p95": 639234.8668348037,
+     "p_positive": 0.67
+    },
+    "3": {
+     "mean": 297411.7142909979,
+     "median": 172366.35190777644,
+     "p05": -87834.5,
+     "p95": 1043911.2499999995,
+     "p_positive": 0.732
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 0.818,
+     "median_months": 8.142857142857142
+    },
+    "50000": {
+     "p_reach": 0.706,
+     "median_months": 11.666666666666666
+    },
+    "100000": {
+     "p_reach": 0.64,
+     "median_months": 13.761904761904763
+    },
+    "250000": {
+     "p_reach": 0.436,
+     "median_months": 18.142857142857142
+    },
+    "1000000": {
+     "p_reach": 0.066,
+     "median_months": 33.23809523809524
+    }
+   }
+  },
+  {
+   "model": "basket_planning",
+   "program": "topstep_150k",
+   "slots": 5,
+   "rho": 0.4,
+   "by_year": {
+    "1": {
+     "mean": 42366.710742798336,
+     "median": 32686.32628212442,
+     "p05": -30927.54261002436,
+     "p95": 150316.67283488356,
+     "p_positive": 0.73
+    },
+    "2": {
+     "mean": 137414.44285394216,
+     "median": 120901.72372873954,
+     "p05": -30933.897079805636,
+     "p95": 367563.445927977,
+     "p_positive": 0.876
+    },
+    "3": {
+     "mean": 256344.93186680524,
+     "median": 231184.93355929927,
+     "p05": -1976.084474773746,
+     "p95": 591895.584052025,
+     "p_positive": 0.946
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 0.96,
+     "median_months": 7.214285714285714
+    },
+    "50000": {
+     "p_reach": 0.898,
+     "median_months": 13.619047619047619
+    },
+    "100000": {
+     "p_reach": 0.798,
+     "median_months": 18.238095238095237
+    },
+    "250000": {
+     "p_reach": 0.47,
+     "median_months": 26.80952380952381
+    },
+    "1000000": {
+     "p_reach": 0.0,
+     "median_months": null
+    }
+   }
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "slots": 1,
+   "rho": 1.0,
+   "by_year": {
+    "1": {
+     "mean": 30289.29752905447,
+     "median": 22455.5,
+     "p05": -7599.0,
+     "p95": 85060.45,
+     "p_positive": 0.798
+    },
+    "2": {
+     "mean": 88846.98050131628,
+     "median": 89349.7578882089,
+     "p05": -5318.899999999999,
+     "p95": 177853.85372854737,
+     "p_positive": 0.912
+    },
+    "3": {
+     "mean": 160447.5487201853,
+     "median": 175685.78944953321,
+     "p05": 9687.7,
+     "p95": 268822.89999999997,
+     "p_positive": 0.97
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 0.968,
+     "median_months": 8.119047619047619
+    },
+    "50000": {
+     "p_reach": 0.886,
+     "median_months": 15.952380952380953
+    },
+    "100000": {
+     "p_reach": 0.736,
+     "median_months": 21.666666666666668
+    },
+    "250000": {
+     "p_reach": 0.154,
+     "median_months": 34.142857142857146
+    },
+    "1000000": {
+     "p_reach": 0.0,
+     "median_months": null
+    }
+   }
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "slots": 3,
+   "rho": 1.0,
+   "by_year": {
+    "1": {
+     "mean": 81394.04529910904,
+     "median": 50067.0,
+     "p05": -24138.0,
+     "p95": 255181.34999999998,
+     "p_positive": 0.722
+    },
+    "2": {
+     "mean": 254944.26469728936,
+     "median": 260003.68072175983,
+     "p05": -17257.5,
+     "p95": 525181.35,
+     "p_positive": 0.9
+    },
+    "3": {
+     "mean": 471867.1511775204,
+     "median": 512041.7196135616,
+     "p05": 14016.443863270211,
+     "p95": 806535.7499999999,
+     "p_positive": 0.958
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 0.97,
+     "median_months": 6.238095238095238
+    },
+    "50000": {
+     "p_reach": 0.936,
+     "median_months": 10.833333333333334
+    },
+    "100000": {
+     "p_reach": 0.9,
+     "median_months": 13.761904761904763
+    },
+    "250000": {
+     "p_reach": 0.772,
+     "median_months": 19.785714285714285
+    },
+    "1000000": {
+     "p_reach": 0.0,
+     "median_months": null
+    }
+   }
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "slots": 5,
+   "rho": 1.0,
+   "by_year": {
+    "1": {
+     "mean": 147833.08742322086,
+     "median": 109306.69706405714,
+     "p05": -39485.0,
+     "p95": 425265.0,
+     "p_positive": 0.766
+    },
+    "2": {
+     "mean": 452452.93930803845,
+     "median": 467882.5,
+     "p05": -27488.49999999999,
+     "p95": 875265.0,
+     "p_positive": 0.912
+    },
+    "3": {
+     "mean": 821299.1840918035,
+     "median": 885079.8620524523,
+     "p05": 60612.75,
+     "p95": 1346312.25,
+     "p_positive": 0.966
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 0.982,
+     "median_months": 5.285714285714286
+    },
+    "50000": {
+     "p_reach": 0.956,
+     "median_months": 8.619047619047619
+    },
+    "100000": {
+     "p_reach": 0.94,
+     "median_months": 10.571428571428571
+    },
+    "250000": {
+     "p_reach": 0.886,
+     "median_months": 15.380952380952381
+    },
+    "1000000": {
+     "p_reach": 0.42,
+     "median_months": 30.80952380952381
+    }
+   }
+  },
+  {
+   "model": "basket_optimistic",
+   "program": "topstep_150k",
+   "slots": 5,
+   "rho": 0.4,
+   "by_year": {
+    "1": {
+     "mean": 139357.04171018637,
+     "median": 132012.81124326022,
+     "p05": 7085.272970505332,
+     "p95": 292270.9492709563,
+     "p_positive": 0.964
+    },
+    "2": {
+     "mean": 423935.09717588377,
+     "median": 426024.36725284334,
+     "p05": 137405.79181642868,
+     "p95": 710941.9386670686,
+     "p_positive": 0.996
+    },
+    "3": {
+     "mean": 776808.1659613966,
+     "median": 794047.7225217507,
+     "p05": 335982.88757106866,
+     "p95": 1167144.4853880685,
+     "p_positive": 1.0
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 1.0,
+     "median_months": 3.6666666666666665
+    },
+    "50000": {
+     "p_reach": 1.0,
+     "median_months": 7.214285714285714
+    },
+    "100000": {
+     "p_reach": 0.996,
+     "median_months": 10.261904761904763
+    },
+    "250000": {
+     "p_reach": 0.964,
+     "median_months": 16.714285714285715
+    },
+    "1000000": {
+     "p_reach": 0.17,
+     "median_months": 33.19047619047619
+    }
+   }
+  }
+ ],
+ "flywheel": [
+  {
+   "model": "basket_planning",
+   "risk_fraction": 0.01,
+   "by_year": {
+    "1": {
+     "median": 34097.15657220046,
+     "mean": 47842.81317992913,
+     "p05": -30931.39135162691,
+     "p95": 182130.05398671702
+    },
+    "2": {
+     "median": 138360.60963321972,
+     "mean": 175596.7448466083,
+     "p05": -31688.862587746215,
+     "p95": 475498.2673078465
+    },
+    "3": {
+     "median": 304482.6525253359,
+     "mean": 386011.16616017936,
+     "p05": 3525.0002101691002,
+     "p95": 1068696.9969475481
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 0.964,
+     "median_months": 7.0
+    },
+    "50000": {
+     "p_reach": 0.914,
+     "median_months": 13.0
+    },
+    "100000": {
+     "p_reach": 0.856,
+     "median_months": 17.0
+    },
+    "250000": {
+     "p_reach": 0.618,
+     "median_months": 24.0
+    },
+    "1000000": {
+     "p_reach": 0.062,
+     "median_months": 31.0
+    }
+   }
+  },
+  {
+   "model": "basket_planning",
+   "risk_fraction": 0.02,
+   "by_year": {
+    "1": {
+     "median": 37073.256904582624,
+     "mean": 55236.13093342167,
+     "p05": -30554.836582380693,
+     "p95": 216458.81698856375
+    },
+    "2": {
+     "median": 159052.4125531442,
+     "mean": 237813.30726698614,
+     "p05": -30030.30942027284,
+     "p95": 742158.818686182
+    },
+    "3": {
+     "median": 344057.0215979753,
+     "mean": 615162.8601371832,
+     "p05": 6136.998424772338,
+     "p95": 2092597.0053231919
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 0.96,
+     "median_months": 7.0
+    },
+    "50000": {
+     "p_reach": 0.928,
+     "median_months": 12.0
+    },
+    "100000": {
+     "p_reach": 0.886,
+     "median_months": 16.0
+    },
+    "250000": {
+     "p_reach": 0.718,
+     "median_months": 23.0
+    },
+    "1000000": {
+     "p_reach": 0.18,
+     "median_months": 29.0
+    }
+   }
+  },
+  {
+   "model": "basket_planning",
+   "risk_fraction": 0.04,
+   "by_year": {
+    "1": {
+     "median": 36853.71350945021,
+     "mean": 73761.35518148345,
+     "p05": -30785.259912440928,
+     "p95": 307859.72875546006
+    },
+    "2": {
+     "median": 145533.8888640377,
+     "mean": 428525.7341580557,
+     "p05": -31029.74306507101,
+     "p95": 2194569.47661791
+    },
+    "3": {
+     "median": 355277.5696712014,
+     "mean": 1063417.3420017872,
+     "p05": -6254.036318833833,
+     "p95": 5301928.756793105
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 0.968,
+     "median_months": 7.0
+    },
+    "50000": {
+     "p_reach": 0.932,
+     "median_months": 11.0
+    },
+    "100000": {
+     "p_reach": 0.892,
+     "median_months": 15.0
+    },
+    "250000": {
+     "p_reach": 0.784,
+     "median_months": 21.0
+    },
+    "1000000": {
+     "p_reach": 0.334,
+     "median_months": 27.0
+    }
+   }
+  },
+  {
+   "model": "basket_optimistic",
+   "risk_fraction": 0.01,
+   "by_year": {
+    "1": {
+     "median": 163343.1573701809,
+     "mean": 183317.31190837352,
+     "p05": 12238.281716008521,
+     "p95": 405914.1168993949
+    },
+    "2": {
+     "median": 723286.0059463116,
+     "mean": 805909.3797356333,
+     "p05": 215679.67835223593,
+     "p95": 1674881.245444761
+    },
+    "3": {
+     "median": 1857995.0114871154,
+     "mean": 2256947.2186938617,
+     "p05": 639330.4590447714,
+     "p95": 5144513.5684688995
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 1.0,
+     "median_months": 3.0
+    },
+    "50000": {
+     "p_reach": 1.0,
+     "median_months": 6.0
+    },
+    "100000": {
+     "p_reach": 0.998,
+     "median_months": 9.0
+    },
+    "250000": {
+     "p_reach": 0.992,
+     "median_months": 14.0
+    },
+    "1000000": {
+     "p_reach": 0.868,
+     "median_months": 26.0
+    }
+   }
+  },
+  {
+   "model": "basket_optimistic",
+   "risk_fraction": 0.02,
+   "by_year": {
+    "1": {
+     "median": 200613.7515903556,
+     "mean": 255550.3283148341,
+     "p05": 14045.947419425964,
+     "p95": 678411.8457283083
+    },
+    "2": {
+     "median": 1230967.5007831086,
+     "mean": 1690753.8721551208,
+     "p05": 264086.82083533984,
+     "p95": 4718726.34960373
+    },
+    "3": {
+     "median": 4478684.669760777,
+     "mean": 5172388.810204528,
+     "p05": 996223.7929616441,
+     "p95": 11137815.269250367
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 1.0,
+     "median_months": 3.0
+    },
+    "50000": {
+     "p_reach": 1.0,
+     "median_months": 6.0
+    },
+    "100000": {
+     "p_reach": 1.0,
+     "median_months": 8.0
+    },
+    "250000": {
+     "p_reach": 0.998,
+     "median_months": 12.0
+    },
+    "1000000": {
+     "p_reach": 0.966,
+     "median_months": 21.0
+    }
+   }
+  },
+  {
+   "model": "basket_optimistic",
+   "risk_fraction": 0.04,
+   "by_year": {
+    "1": {
+     "median": 281355.7679960927,
+     "mean": 513129.9124187448,
+     "p05": 14109.438629344748,
+     "p95": 1820153.1554434139
+    },
+    "2": {
+     "median": 2866112.7282743063,
+     "mean": 3484982.396010257,
+     "p05": 289240.36824954185,
+     "p95": 8906482.921771176
+    },
+    "3": {
+     "median": 7890319.570378577,
+     "mean": 8105513.363159855,
+     "p05": 1865670.4386967337,
+     "p95": 14774588.889235105
+    }
+   },
+   "milestones": {
+    "10000": {
+     "p_reach": 1.0,
+     "median_months": 3.0
+    },
+    "50000": {
+     "p_reach": 1.0,
+     "median_months": 6.0
+    },
+    "100000": {
+     "p_reach": 1.0,
+     "median_months": 8.0
+    },
+    "250000": {
+     "p_reach": 0.998,
+     "median_months": 10.0
+    },
+    "1000000": {
+     "p_reach": 0.986,
+     "median_months": 17.0
+    }
+   }
+  }
+ ],
+ "growth_law": [
+  {
+   "sharpe": 0.5,
+   "years": [
+    18.420680743952367,
+    24.560907658603156,
+    36.841361487904734,
+    49.12181531720631,
+    55.262042231857095,
+    73.68272297580945
+   ]
+  },
+  {
+   "sharpe": 1.0,
+   "years": [
+    4.605170185988092,
+    6.140226914650789,
+    9.210340371976184,
+    12.280453829301578,
+    13.815510557964274,
+    18.420680743952364
+   ]
+  },
+  {
+   "sharpe": 1.5,
+   "years": [
+    2.046742304883596,
+    2.728989739844795,
+    4.093484609767192,
+    5.45797947968959,
+    6.140226914650788,
+    8.186969219534385
+   ]
+  },
+  {
+   "sharpe": 2.0,
+   "years": [
+    1.151292546497023,
+    1.5350567286626973,
+    2.302585092994046,
+    3.0701134573253945,
+    3.4538776394910684,
+    4.605170185988091
+   ]
+  },
+  {
+   "sharpe": 3.0,
+   "years": [
+    0.511685576220899,
+    0.6822474349611988,
+    1.023371152441798,
+    1.3644948699223975,
+    1.535056728662697,
+    2.046742304883596
+   ]
+  }
+ ],
+ "ceilings": [
+  {
+   "name": "50K Standard",
+   "cap": 2000,
+   "days": 5,
+   "one": 90720.0
+  },
+  {
+   "name": "150K Standard",
+   "cap": 5000,
+   "days": 5,
+   "one": 226800.0
+  },
+  {
+   "name": "50K Consistency",
+   "cap": 3000,
+   "days": 3,
+   "one": 226800.0
+  },
+  {
+   "name": "150K Consistency",
+   "cap": 6000,
+   "days": 3,
+   "one": 453600.0
+  }
+ ]
+}
