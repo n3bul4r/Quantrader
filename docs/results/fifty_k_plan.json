@@ -1,0 +1,426 @@
+{
+ "expectation": [
+  {
+   "model": "S1_planning",
+   "per_trade": 31.850094501363376,
+   "per_month": 535.0815876229047,
+   "risk_needed": 3270.5292809165035
+  },
+  {
+   "model": "basket_planning",
+   "per_trade": 31.850094501363376,
+   "per_month": 1605.2447628687141,
+   "risk_needed": 1090.1764269721682
+  },
+  {
+   "model": "basket_optimistic",
+   "per_trade": 73.58402839034066,
+   "per_month": 3708.635030873169,
+   "risk_needed": 471.871722461721
+  }
+ ],
+ "single": [
+  {
+   "model": "S1_planning",
+   "risk": 200,
+   "p_blown": 0.9035,
+   "total_mean": 680.648013047694,
+   "total_median": 272.5829588011791,
+   "monthly_mean": 113.44133550794902,
+   "monthly_median": 45.43049313352985,
+   "p_3k": 0.0,
+   "p_zero": 0.2575
+  },
+  {
+   "model": "S1_planning",
+   "risk": 300,
+   "p_blown": 0.962,
+   "total_mean": 878.0336492412251,
+   "total_median": 251.5529957212225,
+   "monthly_mean": 146.3389415402042,
+   "monthly_median": 41.92549928687042,
+   "p_3k": 0.0,
+   "p_zero": 0.38775
+  },
+  {
+   "model": "S1_planning",
+   "risk": 500,
+   "p_blown": 0.96825,
+   "total_mean": 1049.393488723157,
+   "total_median": 0.0,
+   "monthly_mean": 174.89891478719284,
+   "monthly_median": 0.0,
+   "p_3k": 0.0,
+   "p_zero": 0.6035
+  },
+  {
+   "model": "basket_planning",
+   "risk": 200,
+   "p_blown": 0.9845,
+   "total_mean": 968.524822893585,
+   "total_median": 312.2770680333465,
+   "monthly_mean": 161.42080381559748,
+   "monthly_median": 52.04617800555775,
+   "p_3k": 0.0,
+   "p_zero": 0.30375
+  },
+  {
+   "model": "basket_planning",
+   "risk": 300,
+   "p_blown": 0.991,
+   "total_mean": 1160.1617979502157,
+   "total_median": 180.0187474298359,
+   "monthly_mean": 193.36029965836929,
+   "monthly_median": 30.00312457163932,
+   "p_3k": 0.0,
+   "p_zero": 0.47325
+  },
+  {
+   "model": "basket_planning",
+   "risk": 500,
+   "p_blown": 0.97875,
+   "total_mean": 1379.6172968109388,
+   "total_median": 0.0,
+   "monthly_mean": 229.93621613515643,
+   "monthly_median": 0.0,
+   "p_3k": 0.007,
+   "p_zero": 0.67925
+  },
+  {
+   "model": "basket_optimistic",
+   "risk": 200,
+   "p_blown": 0.94025,
+   "total_mean": 1874.773056522999,
+   "total_median": 581.7854793808617,
+   "monthly_mean": 312.4621760871665,
+   "monthly_median": 96.96424656347696,
+   "p_3k": 0.0,
+   "p_zero": 0.1775
+  },
+  {
+   "model": "basket_optimistic",
+   "risk": 300,
+   "p_blown": 0.95575,
+   "total_mean": 2284.354813724397,
+   "total_median": 566.9424967471582,
+   "monthly_mean": 380.7258022873995,
+   "monthly_median": 94.49041612452638,
+   "p_3k": 0.00275,
+   "p_zero": 0.342
+  },
+  {
+   "model": "basket_optimistic",
+   "risk": 500,
+   "p_blown": 0.90525,
+   "total_mean": 2886.2906475774384,
+   "total_median": 0.0,
+   "monthly_mean": 481.0484412629064,
+   "monthly_median": 0.0,
+   "p_3k": 0.04375,
+   "p_zero": 0.57325
+  },
+  {
+   "model": "zero_edge_basket",
+   "risk": 200,
+   "p_blown": 0.99925,
+   "total_mean": 435.87631308627437,
+   "total_median": 116.38434753037203,
+   "monthly_mean": 72.64605218104573,
+   "monthly_median": 19.397391255062004,
+   "p_3k": 0.0,
+   "p_zero": 0.49525
+  },
+  {
+   "model": "zero_edge_basket",
+   "risk": 300,
+   "p_blown": 1.0,
+   "total_mean": 515.1537238591228,
+   "total_median": 0.0,
+   "monthly_mean": 85.85895397652047,
+   "monthly_median": 0.0,
+   "p_3k": 0.0,
+   "p_zero": 0.62475
+  },
+  {
+   "model": "zero_edge_basket",
+   "risk": 500,
+   "p_blown": 0.9975,
+   "total_mean": 596.0208456092214,
+   "total_median": 0.0,
+   "monthly_mean": 99.3368076015369,
+   "monthly_median": 0.0,
+   "p_3k": 0.0,
+   "p_zero": 0.7815
+  }
+ ],
+ "eval": [
+  {
+   "model": "S1_planning",
+   "risk": 200,
+   "p_pass": 0.366,
+   "days": 99.0
+  },
+  {
+   "model": "S1_planning",
+   "risk": 300,
+   "p_pass": 0.32366666666666666,
+   "days": 48.0
+  },
+  {
+   "model": "S1_planning",
+   "risk": 500,
+   "p_pass": 0.24733333333333332,
+   "days": 22.0
+  },
+  {
+   "model": "basket_planning",
+   "risk": 200,
+   "p_pass": 0.388,
+   "days": 40.0
+  },
+  {
+   "model": "basket_planning",
+   "risk": 300,
+   "p_pass": 0.31666666666666665,
+   "days": 19.0
+  },
+  {
+   "model": "basket_planning",
+   "risk": 500,
+   "p_pass": 0.24033333333333334,
+   "days": 10.0
+  },
+  {
+   "model": "basket_optimistic",
+   "risk": 200,
+   "p_pass": 0.612,
+   "days": 36.0
+  },
+  {
+   "model": "basket_optimistic",
+   "risk": 300,
+   "p_pass": 0.48433333333333334,
+   "days": 18.0
+  },
+  {
+   "model": "basket_optimistic",
+   "risk": 500,
+   "p_pass": 0.351,
+   "days": 10.0
+  },
+  {
+   "model": "zero_edge_basket",
+   "risk": 200,
+   "p_pass": 0.14833333333333334,
+   "days": 39.0
+  },
+  {
+   "model": "zero_edge_basket",
+   "risk": 300,
+   "p_pass": 0.15133333333333332,
+   "days": 18.0
+  },
+  {
+   "model": "zero_edge_basket",
+   "risk": 500,
+   "p_pass": 0.133,
+   "days": 9.0
+  }
+ ],
+ "multi": [
+  {
+   "model": "basket_planning",
+   "accounts": 1,
+   "risk": 300,
+   "p_blown": 0.9853333333333333,
+   "total_mean": 1290.4148207028866,
+   "total_median": 259.37238543867676,
+   "monthly_mean": 215.0691367838144,
+   "monthly_median": 43.228730906446124,
+   "p_3k": 0.0,
+   "p_zero": 0.43933333333333335
+  },
+  {
+   "model": "basket_planning",
+   "accounts": 3,
+   "risk": 300,
+   "p_blown": 0.9891111111111112,
+   "total_mean": 3699.247159603346,
+   "total_median": 1685.6514530470033,
+   "monthly_mean": 616.5411932672242,
+   "monthly_median": 280.9419088411672,
+   "p_3k": 0.028666666666666667,
+   "p_zero": 0.16066666666666668
+  },
+  {
+   "model": "basket_planning",
+   "accounts": 5,
+   "risk": 300,
+   "p_blown": 0.9896,
+   "total_mean": 5847.83403117353,
+   "total_median": 3395.1594225435847,
+   "monthly_mean": 974.6390051955882,
+   "monthly_median": 565.8599037572641,
+   "p_3k": 0.06266666666666666,
+   "p_zero": 0.074
+  },
+  {
+   "model": "basket_planning",
+   "accounts": 5,
+   "risk": 500,
+   "p_blown": 0.9761333333333333,
+   "total_mean": 6942.422316491763,
+   "total_median": 3207.408452782322,
+   "monthly_mean": 1157.0703860819606,
+   "monthly_median": 534.5680754637203,
+   "p_3k": 0.12266666666666666,
+   "p_zero": 0.24066666666666667
+  },
+  {
+   "model": "basket_optimistic",
+   "accounts": 1,
+   "risk": 300,
+   "p_blown": 0.938,
+   "total_mean": 2613.097783652807,
+   "total_median": 681.5299613934485,
+   "monthly_mean": 435.51629727546776,
+   "monthly_median": 113.58832689890808,
+   "p_3k": 0.0026666666666666666,
+   "p_zero": 0.32266666666666666
+  },
+  {
+   "model": "basket_optimistic",
+   "accounts": 3,
+   "risk": 300,
+   "p_blown": 0.9466666666666667,
+   "total_mean": 6964.997466863451,
+   "total_median": 3699.394821879088,
+   "monthly_mean": 1160.8329111439086,
+   "monthly_median": 616.5658036465147,
+   "p_3k": 0.094,
+   "p_zero": 0.07933333333333334
+  },
+  {
+   "model": "basket_optimistic",
+   "accounts": 5,
+   "risk": 300,
+   "p_blown": 0.9536,
+   "total_mean": 11487.842043764062,
+   "total_median": 7907.603774991631,
+   "monthly_mean": 1914.6403406273437,
+   "monthly_median": 1317.933962498605,
+   "p_3k": 0.218,
+   "p_zero": 0.024
+  },
+  {
+   "model": "basket_optimistic",
+   "accounts": 5,
+   "risk": 500,
+   "p_blown": 0.9128,
+   "total_mean": 13772.7390352028,
+   "total_median": 7701.167847489465,
+   "monthly_mean": 2295.456505867133,
+   "monthly_median": 1283.5279745815776,
+   "p_3k": 0.30866666666666664,
+   "p_zero": 0.14466666666666667
+  }
+ ],
+ "bigger": [
+  {
+   "model": "basket_planning",
+   "setup": "1 \u00d7 50K",
+   "risk": 500,
+   "p_blown": 0.9665,
+   "total_mean": 1578.980130834689,
+   "total_median": 0.0,
+   "monthly_mean": 263.1633551391148,
+   "monthly_median": 0.0,
+   "p_3k": 0.0095,
+   "p_zero": 0.6875
+  },
+  {
+   "model": "basket_planning",
+   "setup": "1 \u00d7 150K",
+   "risk": 1125,
+   "p_blown": 0.977,
+   "total_mean": 3721.4140625209584,
+   "total_median": 0.0,
+   "monthly_mean": 620.2356770868264,
+   "monthly_median": 0.0,
+   "p_3k": 0.071,
+   "p_zero": 0.6955
+  },
+  {
+   "model": "basket_planning",
+   "setup": "5 \u00d7 50K",
+   "risk": 500,
+   "p_blown": 0.9716,
+   "total_mean": 7279.189499053946,
+   "total_median": 3022.942743307608,
+   "monthly_mean": 1213.1982498423242,
+   "monthly_median": 503.823790551268,
+   "p_3k": 0.132,
+   "p_zero": 0.297
+  },
+  {
+   "model": "basket_planning",
+   "setup": "3 \u00d7 150K",
+   "risk": 1125,
+   "p_blown": 0.9796666666666667,
+   "total_mean": 9435.89351492528,
+   "total_median": 2839.5347427163324,
+   "monthly_mean": 1572.648919154213,
+   "monthly_median": 473.25579045272207,
+   "p_3k": 0.178,
+   "p_zero": 0.446
+  },
+  {
+   "model": "basket_optimistic",
+   "setup": "1 \u00d7 50K",
+   "risk": 500,
+   "p_blown": 0.896,
+   "total_mean": 3074.139722065325,
+   "total_median": 0.0,
+   "monthly_mean": 512.3566203442207,
+   "monthly_median": 0.0,
+   "p_3k": 0.0545,
+   "p_zero": 0.595
+  },
+  {
+   "model": "basket_optimistic",
+   "setup": "1 \u00d7 150K",
+   "risk": 1125,
+   "p_blown": 0.9175,
+   "total_mean": 7148.44251831593,
+   "total_median": 0.0,
+   "monthly_mean": 1191.4070863859881,
+   "monthly_median": 0.0,
+   "p_3k": 0.148,
+   "p_zero": 0.6075
+  },
+  {
+   "model": "basket_optimistic",
+   "setup": "5 \u00d7 50K",
+   "risk": 500,
+   "p_blown": 0.9038,
+   "total_mean": 14509.180153782421,
+   "total_median": 8448.653185106188,
+   "monthly_mean": 2418.1966922970705,
+   "monthly_median": 1408.1088641843646,
+   "p_3k": 0.337,
+   "p_zero": 0.194
+  },
+  {
+   "model": "basket_optimistic",
+   "setup": "3 \u00d7 150K",
+   "risk": 1125,
+   "p_blown": 0.9303333333333333,
+   "total_mean": 19151.451686652214,
+   "total_median": 6167.387348934775,
+   "monthly_mean": 3191.9086144420357,
+   "monthly_median": 1027.8978914891293,
+   "p_3k": 0.332,
+   "p_zero": 0.325
+  }
+ ]
+}
