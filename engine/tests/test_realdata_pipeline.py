@@ -65,3 +65,13 @@ def test_bootstrap_with_slot_model_runs():
                            sizing=SimSizing(risk_dollars=300), horizon_days=126, n_paths=60, slot_model=sm,
                            monthly_topup=116, return_monthly=True)
     assert r["monthly_cash"].shape == (6, 60)
+
+
+def test_histdata_parser_handles_fixed_est_and_dst():
+    import importlib.util, pathlib
+    spec = importlib.util.spec_from_file_location("imp", pathlib.Path(__file__).parents[1] / "scripts" / "import_histdata.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    df = mod.parse_ascii("20230103 093000;3853.25;3855.0;3851.75;3854.5;0\n20230703 083000;4450.0;4451.0;4449.0;4450.5;0\n")
+    et = df["ts_event"].dt.tz_convert("America/New_York")
+    assert (et.dt.hour.tolist(), et.dt.minute.tolist()) == ([9, 9], [30, 30])   # winter 09:30 EST, summer 08:30 EST = 09:30 EDT
