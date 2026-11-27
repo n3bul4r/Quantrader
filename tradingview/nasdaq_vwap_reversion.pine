@@ -1,0 +1,139 @@
+//@version=5
+// Quantrader S3 — VWAP reversion on the Nasdaq-100 (MNQ1! / NQ1!) — SIDE / CONTROL forward test
+// Real-data verdict (2018-2026, 1-minute, docs/REAL_DATA_RESULTS.md): FAILED. Gross edge ≈ 0, net ≈ −0.04 R/trade
+// after costs; only 11 % of 2,304 variants were profitable out of sample. Run it only as a paper comparison.
+// One difference worth testing: the backtest data had no volume (time-weighted "VWAP"); TradingView has real volume.
+// Use a 5-minute chart of MNQ1!. Times are New York.
+//
+// Rules (the best in-sample variant of the search)
+//   VWAP and its volume-weighted standard deviation sd, anchored at 09:30
+//   from 10:00 to 15:00 ET, at each bar close, if flat and no trade yet today:
+//     fade: long if close <= VWAP − k·sd, short if close >= VWAP + k·sd   (k = 2.5)
+//     only while price is still inside the noise area (no fading of real breakouts)
+//     skip when sd < 0.25 · σ · open (VWAP band too narrow to cover costs)
+//   stop = entry ∓ 2·sd; target = VWAP (moves with it); time stop 60 min; flat 16:00; 1 trade per day
+strategy("Quantrader S3 – Nasdaq VWAP reversion (control)", overlay = true, pyramiding = 0,
+     commission_type = strategy.commission.cash_per_contract, commission_value = 0.70, slippage = 1,
+     initial_capital = 50000, currency = currency.USD, process_orders_on_close = true, max_bars_back = 5000)
+
+// ---------------------------------------------------------------- inputs
+startDate  = input.time(timestamp("2026-11-30T00:00:00-05:00"), "Forward test starts (no trades before)")
+lookback   = input.int(14, "Noise lookback (sessions)", minval = 5)
+bandK      = input.float(2.5, "Entry: distance from VWAP (× sd)", step = 0.1)
+stopK      = input.float(2.0, "Stop distance (× sd)", step = 0.1)
+halfTarget = input.bool(false, "Target halfway to VWAP instead of VWAP")
+timeStop   = input.int(60, "Time stop (minutes)", minval = 5)
+startMin   = input.int(30, "First entry (minutes after 09:30)")
+lastEntry  = input.int(330, "Last entry (minutes after 09:30)")
+maxEntries = input.int(1, "Max entries per day", minval = 1)
+insideOnly = input.bool(true, "Only fade inside the noise area")
+riskUSD    = input.float(500, "Risk per trade ($)")
+maxQty     = input.int(50, "Max contracts")
+dailyStop  = input.float(1000, "Daily loss stop ($)")
+tz = "America/New_York"
+
+strategy.risk.max_intraday_loss(dailyStop, strategy.cash)
+
+// ---------------------------------------------------------------- session bookkeeping
+inSess   = not na(time(timeframe.period, "0930-1600", tz))
+barMin   = int(timeframe.in_seconds() / 60)
+nBars    = int(390 / barMin)
+m        = hour(time, tz) * 60 + minute(time, tz) - 570          // minutes since 09:30 at bar start
+closeMin = m + barMin                                            // minutes since 09:30 at bar close
+b        = math.min(math.max(int(m / barMin), 0), nBars - 1)     // bar slot within the session
+newDay   = inSess and not inSess[1]
+
+var float dayOpen   = na
+var float prevClose = na
+var float lastRth   = na
+var int   entries   = 0
+var float cumV      = 0.0
+var float cumPV     = 0.0
+var float cumP2V    = 0.0
+var float stopPx    = na
+var float entryPx   = na
+var int   entryMin  = na
+var matrix<float> hist  = matrix.new<float>(0, nBars, na)   // one row per past session, one column per bar slot
+var array<float>  today = array.new<float>(nBars, na)
+
+if newDay
+    if not na(dayOpen)
+        matrix.add_row(hist, matrix.rows(hist), today)
+        if matrix.rows(hist) > lookback
+            matrix.remove_row(hist, 0)
+    today     := array.new<float>(nBars, na)
+    prevClose := lastRth
+    dayOpen   := open
+    entries   := 0
+    cumV      := 0.0
+    cumPV     := 0.0
+    cumP2V    := 0.0
+if inSess
+    v = math.max(nz(volume), 1e-9)
+    cumV    += v
+    cumPV   += hlc3 * v
+    cumP2V  += hlc3 * hlc3 * v
+    lastRth := close
+vwapRth = cumV > 0 ? cumPV / cumV : hlc3
+vwapSd  = cumV > 0 ? math.sqrt(math.max(cumP2V / cumV - vwapRth * vwapRth, 0.0)) : 0.0
+
+// ---------------------------------------------------------------- noise area at this bar slot
+float sigma = na
+float up = na
+float dn = na
+if inSess and not na(dayOpen)
+    array.set(today, b, math.abs(close / dayOpen - 1))
+    if matrix.rows(hist) >= lookback and not na(prevClose)
+        col = matrix.col(hist, b)
+        float tot = 0.0
+        int cnt = 0
+        for x in col
+            if not na(x)
+                tot += x
+                cnt += 1
+        sigma := cnt >= lookback / 2 ? tot / cnt : na
+    if not na(sigma)
+        up := math.max(dayOpen, prevClose) * (1 + sigma)
+        dn := math.min(dayOpen, prevClose) * (1 - sigma)
+
+active = time >= startDate
+
+// ---------------------------------------------------------------- time stop and end of day
+if strategy.position_size != 0 and not na(entryMin) and closeMin - entryMin >= timeStop
+    strategy.close_all(comment = "time")
+if inSess and closeMin >= 390
+    strategy.close_all(comment = "EOD")
+
+// ---------------------------------------------------------------- entries
+justEntered = false
+if active and inSess and not na(sigma) and strategy.position_size == 0 and entries < maxEntries
+     and closeMin >= startMin and closeMin <= lastEntry and vwapSd >= 0.25 * sigma * dayOpen
+    inside = not insideOnly or (close < up and close > dn)
+    dev = close - vwapRth
+    if inside and dev <= -bandK * vwapSd
+        q = math.min(maxQty, math.max(1, math.floor(riskUSD / (stopK * vwapSd * syminfo.pointvalue))))
+        strategy.entry("L", strategy.long, qty = q)
+        stopPx := close - stopK * vwapSd
+        justEntered := true
+    else if inside and dev >= bandK * vwapSd
+        q = math.min(maxQty, math.max(1, math.floor(riskUSD / (stopK * vwapSd * syminfo.pointvalue))))
+        strategy.entry("S", strategy.short, qty = q)
+        stopPx := close + stopK * vwapSd
+        justEntered := true
+    if justEntered
+        entryPx  := close
+        entryMin := closeMin
+        entries  += 1
+
+// ---------------------------------------------------------------- bracket: fixed stop + VWAP target (re-sent every bar)
+tgt = halfTarget ? 0.5 * (nz(entryPx, close) + vwapRth) : vwapRth
+if strategy.position_size > 0 or (justEntered and close < vwapRth)
+    strategy.exit("XL", from_entry = "L", stop = stopPx, limit = tgt, comment_loss = "stop", comment_profit = "VWAP")
+if strategy.position_size < 0 or (justEntered and close > vwapRth)
+    strategy.exit("XS", from_entry = "S", stop = stopPx, limit = tgt, comment_loss = "stop", comment_profit = "VWAP")
+
+// ---------------------------------------------------------------- visuals
+plot(inSess ? vwapRth : na, "RTH VWAP", color.new(color.orange, 0), 2)
+plot(inSess ? vwapRth + bandK * vwapSd : na, "Short zone", color.new(color.red, 40), 1)
+plot(inSess ? vwapRth - bandK * vwapSd : na, "Long zone", color.new(color.teal, 40), 1)
+plot(strategy.position_size != 0 ? stopPx : na, "Stop", color.new(color.gray, 0), 1, plot.style_linebr)

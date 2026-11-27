@@ -100,6 +100,8 @@ if isDecision and not na(sigma) and trailOn
             stopPx := math.min(stopPx, tr)
 
 // entries
+justLong = false
+justShort = false
 if active and isDecision and not na(sigma) and entries < maxEntries and closeMin <= 360
     floorPts = stopFloor * sigma * dayOpen
     if close > up and strategy.position_size <= 0
@@ -108,17 +110,19 @@ if active and isDecision and not na(sigma) and entries < maxEntries and closeMin
         strategy.entry("L", strategy.long, qty = q)
         stopPx  := s
         entries += 1
+        justLong := true
     else if close < dn and strategy.position_size >= 0
         s = trailOn ? math.max(math.min(dn, vwapRth), close + floorPts) : close + floorPts
         q = math.min(maxQty, math.max(1, math.floor(riskUSD / ((s - close) * syminfo.pointvalue))))
         strategy.entry("S", strategy.short, qty = q)
         stopPx  := s
         entries += 1
+        justShort := true
 
-// protective stops (server-side style) and end-of-day flat
-if strategy.position_size > 0
+// protective stops (server-side style, placed on the entry bar itself) and end-of-day flat
+if (strategy.position_size > 0 and not justShort) or justLong
     strategy.exit("XL", from_entry = "L", stop = stopPx, comment = "stop")
-if strategy.position_size < 0
+if (strategy.position_size < 0 and not justLong) or justShort
     strategy.exit("XS", from_entry = "S", stop = stopPx, comment = "stop")
 if inSess and closeMin >= 390
     strategy.close_all(comment = "EOD")
