@@ -1,0 +1,138 @@
+//@version=5
+// Quantrader S1 — Noise-Area Intraday Momentum on the Nasdaq-100 (MNQ1! / NQ1!)
+// The one strategy that passed the real-data walk-forward test (2018-2026, out-of-sample Sharpe ~0.5-0.7).
+// Paper-trade / forward-test version. Use a 5-minute chart of MNQ1! (or NQ1!). Times are New York.
+//
+// Rules
+//   noise width σ(t) = average over the last N sessions of |close at time t / session open − 1|
+//   upper = max(session open, previous RTH close) × (1 + k·σ),  lower = min(...) × (1 − k·σ)
+//   every :00 / :30 from 10:00 to 15:30 ET: long if close > upper, short if close < lower (reversal allowed)
+//   stop: fixed at entry ∓ floor·σ·open   (or, with "trail" on: max/min(band, VWAP) re-checked every 30 min)
+//   flat at 16:00 ET, never overnight; fixed $ risk per trade; daily loss stop
+strategy("Quantrader S1 – Nasdaq noise-area momentum", overlay = true, pyramiding = 0,
+     commission_type = strategy.commission.cash_per_contract, commission_value = 0.70, slippage = 1,
+     initial_capital = 50000, currency = currency.USD, process_orders_on_close = true, max_bars_back = 5000)
+
+// ---------------------------------------------------------------- inputs
+startDate  = input.time(timestamp("2026-11-30T00:00:00-05:00"), "Forward test starts (no trades before)")
+lookback   = input.int(14, "Noise lookback (sessions)", minval = 5)
+bandMult   = input.float(1.0, "Band multiplier k", step = 0.1)
+stopFloor  = input.float(1.0, "Stop distance (× σ × open)", step = 0.1)
+trailOn    = input.bool(false, "Trail stop on max/min(band, VWAP)")
+maxEntries = input.int(3, "Max entries per day", minval = 1)
+riskUSD    = input.float(500, "Risk per trade ($)")
+maxQty     = input.int(50, "Max contracts")
+dailyStop  = input.float(1000, "Daily loss stop ($)")
+tz = "America/New_York"
+
+strategy.risk.max_intraday_loss(dailyStop, strategy.cash)
+
+// ---------------------------------------------------------------- session bookkeeping
+inSess   = not na(time(timeframe.period, "0930-1600", tz))
+barMin   = int(timeframe.in_seconds() / 60)
+m        = hour(time, tz) * 60 + minute(time, tz) - 570          // minutes since 09:30 at bar start
+closeMin = m + barMin                                            // minutes since 09:30 at bar close
+newDay   = inSess and not inSess[1]
+
+var float dayOpen   = na
+var float prevClose = na
+var float lastRth   = na
+var int   entries   = 0
+var float cumPV     = 0.0
+var float cumV      = 0.0
+var float stopPx    = na
+var matrix<float> hist  = matrix.new<float>(0, 12, na)   // one row per past session, one column per decision time
+var array<float>  today = array.new<float>(12, na)
+
+if newDay
+    if not na(dayOpen)
+        matrix.add_row(hist, matrix.rows(hist), today)
+        if matrix.rows(hist) > lookback
+            matrix.remove_row(hist, 0)
+    today     := array.new<float>(12, na)
+    prevClose := lastRth
+    dayOpen   := open
+    entries   := 0
+    cumPV     := 0.0
+    cumV      := 0.0
+if inSess
+    cumPV   += hlc3 * volume
+    cumV    += volume
+    lastRth := close
+vwapRth = cumV > 0 ? cumPV / cumV : hlc3
+
+// ---------------------------------------------------------------- decision points (bar closes at :00 / :30)
+isDecision = inSess and closeMin % 30 == 0 and closeMin >= 30 and closeMin <= 360
+k = isDecision ? int(closeMin / 30) - 1 : na
+float sigma = na
+float up = na
+float dn = na
+if isDecision and not na(dayOpen)
+    array.set(today, k, math.abs(close / dayOpen - 1))
+    if matrix.rows(hist) >= lookback and not na(prevClose)
+        col = matrix.col(hist, k)
+        float tot = 0.0
+        int cnt = 0
+        for v in col
+            if not na(v)
+                tot += v
+                cnt += 1
+        sigma := cnt >= lookback / 2 ? tot / cnt : na
+    if not na(sigma)
+        up    := math.max(dayOpen, prevClose) * (1 + bandMult * sigma)
+        dn    := math.min(dayOpen, prevClose) * (1 - bandMult * sigma)
+
+active = time >= startDate
+
+// trailing re-check
+if isDecision and not na(sigma) and trailOn
+    if strategy.position_size > 0
+        tr = math.max(up, vwapRth)
+        if close < tr
+            strategy.close("L", comment = "trail")
+        else
+            stopPx := math.max(stopPx, tr)
+    if strategy.position_size < 0
+        tr = math.min(dn, vwapRth)
+        if close > tr
+            strategy.close("S", comment = "trail")
+        else
+            stopPx := math.min(stopPx, tr)
+
+// entries
+if active and isDecision and not na(sigma) and entries < maxEntries and closeMin <= 360
+    floorPts = stopFloor * sigma * dayOpen
+    if close > up and strategy.position_size <= 0
+        s = trailOn ? math.min(math.max(up, vwapRth), close - floorPts) : close - floorPts
+        q = math.min(maxQty, math.max(1, math.floor(riskUSD / ((close - s) * syminfo.pointvalue))))
+        strategy.entry("L", strategy.long, qty = q)
+        stopPx  := s
+        entries += 1
+    else if close < dn and strategy.position_size >= 0
+        s = trailOn ? math.max(math.min(dn, vwapRth), close + floorPts) : close + floorPts
+        q = math.min(maxQty, math.max(1, math.floor(riskUSD / ((s - close) * syminfo.pointvalue))))
+        strategy.entry("S", strategy.short, qty = q)
+        stopPx  := s
+        entries += 1
+
+// protective stops (server-side style) and end-of-day flat
+if strategy.position_size > 0
+    strategy.exit("XL", from_entry = "L", stop = stopPx, comment = "stop")
+if strategy.position_size < 0
+    strategy.exit("XS", from_entry = "S", stop = stopPx, comment = "stop")
+if inSess and closeMin >= 390
+    strategy.close_all(comment = "EOD")
+
+// ---------------------------------------------------------------- visuals
+var float upPlot = na
+var float dnPlot = na
+if not na(up)
+    upPlot := up
+    dnPlot := dn
+if newDay
+    upPlot := na
+    dnPlot := na
+plot(inSess ? upPlot : na, "Upper band", color.new(color.teal, 0), 2, plot.style_stepline)
+plot(inSess ? dnPlot : na, "Lower band", color.new(color.red, 0), 2, plot.style_stepline)
+plot(inSess ? vwapRth : na, "RTH VWAP", color.new(color.orange, 30), 1)
+plot(strategy.position_size != 0 ? stopPx : na, "Stop", color.new(color.gray, 0), 1, plot.style_linebr)
